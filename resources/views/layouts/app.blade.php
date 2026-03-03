@@ -382,6 +382,7 @@
 
                             <li><a class="dropdown-item d-flex align-items-center border-block-end" href="mail.html"><i
                                         class="bi bi-chat-left fs-18 me-2 op-7"></i>Logs</a></li>
+                            <livewire:admin.logout />
                             {{--
                             <livewire:auth.signout /> --}}
                         </ul>
@@ -580,10 +581,11 @@
                                             <!-- Start::slide__account -->
                                             <li class="slide__category"><span class="category-name">Account
                                                     Management</span></li>
-                                            <li class="slide"> <a href="{{route('account.index')}}"
+                                            <li class="slide has-sub"> <a href="javascript:void(0);"
                                                     class="side-menu__item {{request()->segment(2) == 'accounts' || request()->segment(2) == 'account' ? 'active' : ''}}">
-                                                    <svg viewBox="0 0 1024 1024"  class="side-menu__icon" fill="currentColor"
-                                                        version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                    <svg viewBox="0 0 1024 1024" class="side-menu__icon"
+                                                        fill="currentColor" version="1.1"
+                                                        xmlns="http://www.w3.org/2000/svg">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>
@@ -600,9 +602,23 @@
                                                         </g>
                                                     </svg>
 
-                                                    <span class="side-menu__label">Accounts</span> </a>
 
-                                            </li> <!-- End::slide -->
+                                                    <span class="side-menu__label">Accounts</span> <i
+                                                        class="fe fe-chevron-right side-menu__angle"></i> </a>
+                                                <ul class="slide-menu child1"
+                                                    style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate3d(119.5px, 294px, 0px);"
+                                                    data-popper-placement="bottom">
+
+                                                    <li class="slide"> <a href="{{route('account.index')}}"
+                                                            class="side-menu__item {{ request()->segment(2) == 'account' || request()->segment(2) == 'accounts' && request()->segment(3) !== 'details' ? 'active' : ''}}">Lists</a>
+                                                    </li>
+                                                    <li class="slide"> <a href="{{route('account.details.index')}}"
+                                                            class="side-menu__item {{ request()->segment(2) == 'account' &&  request()->segment(3) == 'details'  ? 'active' : ''}}">Details</a>
+                                                    </li>
+                                                </ul>
+
+                                            </li>
+
 
                                             <!-- Start::slide__category -->
                                             <li class="slide__category"><span class="category-name">Vehicle

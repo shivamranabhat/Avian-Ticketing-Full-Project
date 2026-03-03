@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\Account;
 
-use App\Models\Account;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 

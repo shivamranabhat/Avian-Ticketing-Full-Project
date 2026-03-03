@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Details::class);
     }
+
+    public function socialLinks()
+    {
+        return $this->hasMany(SocialLink::class);
+    }
+
+    public function businessLinks()
+    {
+        return $this->hasMany(BusinessLink::class);
+    }
 }

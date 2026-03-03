@@ -40,7 +40,7 @@
                         </div>
                         <div
                             class="flex justify-between items-center text-md hover:bg-gradient-to-b hover:from-[#C22C9F] hover:text-white hover:to-[#AA02FF] rounded-lg px-1 py-3 cursor-pointer">
-                            <a href="#" class="flex gap-x-10 items-center text-md">
+                            <a href="{{route('pass.social')}}" class="flex gap-x-10 items-center text-md">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -74,7 +74,7 @@
                         </div>
                         <div
                             class="flex justify-between items-center text-md hover:bg-gradient-to-b hover:from-[#C22C9F] hover:text-white hover:to-[#AA02FF] rounded-lg px-1 py-3 cursor-pointer">
-                            <a href="#" class="flex gap-x-10 items-center text-md">
+                            <a href="{{route('pass.business')}}" class="flex gap-x-10 items-center text-md">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"

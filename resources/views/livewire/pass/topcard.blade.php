@@ -11,7 +11,6 @@
             <!-- Desktop Center Text -->
             <div class="absolute inset-0 hidden md:flex items-center justify-center text-center">
                 <h5 class="text-white text-2xl font-semibold">
-                   
                     {{auth()->user()->details->bio ?? 'No bio available'}}
                 </h5>
             </div>

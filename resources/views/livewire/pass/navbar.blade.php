@@ -2,7 +2,8 @@
         <nav
             class="bg-white border border-[#E9C0E9] md:border-none px-6 py-4 flex items-center justify-between rounded-full navbar">
             <div class="left-col flex gap-x-18 items-center">
-                <img src="{{asset('assets/pass/images/logo.svg')}}" class="w-14 h-14" alt="logo">
+                <a href="/"><img src="{{asset('assets/pass/images/logo.svg')}}" class="w-14 h-14" alt="logo"></a>
+                
                 <div class="links hidden lg:flex gap-x-10 items-center">
                     <a href="#">Templates</a>
                     <a href="#">Learn</a>

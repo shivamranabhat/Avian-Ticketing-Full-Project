@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 
 class Create extends Component
 {
+    public $name;
     public $email = '';
     public $phone = '';
     public $password = '';
