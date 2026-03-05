@@ -33,26 +33,26 @@ class Create extends Component
     {
         $this->validate();
 
-        // Generate slug automatically from email
-        // Examples:
-        //   john.doe@example.com   →  john-doe
-        //   admin@company.com      →  admin-company-com-xyz123 (if collision)
-        $base = Str::slug(
-            Str::before($this->email, '@') . '-' . 
-            Str::afterLast($this->email, '@')
-        );
+        $baseSlug = Str::slug($this->name);
 
-        $slug = $base;
-        $counter = 1;
+        // Get all slugs that start with baseSlug
+        $existingSlugs = User::where('slug', 'LIKE', $baseSlug . '%')
+            ->pluck('slug')
+            ->toArray();
 
-        // Ensure uniqueness (very simple collision handling)
-        while (User::where('slug', $slug)->exists()) {
-            $slug = $base . '-' . Str::random(6);
-            $counter++;
-            if ($counter > 10) { // safety limit
-                $slug = $base . '-' . Str::random(12);
-                break;
+        if (!in_array($baseSlug, $existingSlugs)) {
+            $slug = $baseSlug;
+        } else {
+            $max = 1;
+
+            foreach ($existingSlugs as $existingSlug) {
+                if (preg_match('/^' . preg_quote($baseSlug, '/') . '-(\d+)$/', $existingSlug, $matches)) {
+                    $number = (int) $matches[1];
+                    $max = max($max, $number);
+                }
             }
+
+            $slug = $baseSlug . '-' . ($max + 1);
         }
 
         User::create([

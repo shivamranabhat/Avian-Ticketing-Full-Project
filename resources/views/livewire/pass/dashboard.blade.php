@@ -2,10 +2,10 @@
     <livewire:pass.navbar />
     <livewire:pass.topcard />
 
-   
-    <div class="handles grid grid-cols-1 lg:grid-cols-2 gap-6 px-6 sm:px-16 lg:px-24 xl:px-44">
-        <div class="flex flex-col gap-y-6">
-            <div class="bg-white md:bg-[#fbf3f3] rounded-lg flex flex-col gap-y-6 p-0 md:p-8">
+
+    <div class="handles grid grid-cols-1 lg:grid-cols-2 items-stretch gap-6 px-6 sm:px-16 lg:px-24 xl:px-44">
+        <div class="left-col bg-white md:bg-[#fbf3f3] flex flex-col gap-y-6 h-full">
+            <div class=" rounded-lg flex flex-col gap-y-6 p-0 md:p-8">
                 <div class="flex justify-between">
                     <h5 class="font-bold text-2xl">My Profile</h5>
                     <a href="#">
@@ -20,7 +20,7 @@
                 <div class="flex flex-col gap-y-12">
 
                     <!-- Profile Header -->
-                  <livewire:pass.profile-card />
+                    <livewire:pass.profile-card />
 
                     <div class="flex flex-col gap-y-6 w-full sm:w-[90%] md:w-[80%]">
                         <div
@@ -132,6 +132,6 @@
             </div>
 
         </div>
-        <livewire:pass.side-img />
+       <livewire:pass.side-img />
     </div>
 </div>

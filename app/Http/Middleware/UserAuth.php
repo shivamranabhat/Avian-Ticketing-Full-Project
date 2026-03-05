@@ -14,16 +14,21 @@ class UserAuth
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-     protected function redirectTo(Request $request): ?string
+     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect('/login')->getTargetUrl();
+            return redirect()->route('pass.login');
         }
-        if (Auth::check()) {
-            if(Auth::user()->platform == 'Pass') {
-                return redirect('/pass/dashboard')->getTargetUrl();
-            }
+
+        $user = Auth::user();
+
+        if (
+            $user->platform === 'Pass' &&
+            !$request->routeIs('pass.*')
+        ) {
+            return redirect()->route('pass.dashboard');
         }
+
         return $next($request);
     }
 

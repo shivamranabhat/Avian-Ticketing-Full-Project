@@ -26,7 +26,7 @@
             <div class="flex flex-col">
                 <h5 class="text-lg text-[#1E2330] font-bold">{{auth()->user()->name ?? 'XXXXXX'}}</h5>
                 <p class="flex gap-x-6"> {{auth()->user()->details->bio ?? 'No bio available'}}</p>
-                <a href="#" class="flex gap-x-6"> {{auth()->user()->phone ?? 'No phone available'}} <span> {{auth()->user()->details->location ?? 'No location available'}}</span></a>
+                <a href="tel:{{auth()->user()->phone ?? 'XXXXXXXXXX'}}" class="flex gap-x-6"> {{auth()->user()->phone ?? 'XXXXXXXXXX'}} <span> {{auth()->user()->details->location ?? 'No location available'}}</span></a>
             </div>
         </div>
         <a href="#"

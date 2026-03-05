@@ -66,13 +66,13 @@ Route::prefix('/dashboard')->middleware(Authenticate::class)->group(function () 
 });
 
  Route::get('/', Index::class)->name('pass.index');   
- Route::get('/login', PassLogin::class)->name('pass.login');   
+ Route::get('/login', PassLogin::class)->name('pass.login');  
  Route::prefix('/pass')->middleware(UserAuth::class)->group(function () {
-    Route::get('/pass/{slug}', Details::class)->name('pass.details');   
-    Route::get('/pass/dashboard', PassDashboard::class)->name('pass.dashboard');   
-    Route::get('/pass/cv', Cv::class)->name('pass.cv');   
-    Route::get('/pass/password-reset', Reset::class)->name('pass.reset');   
-    Route::get('/pass/profile', Profile::class)->name('pass.profile');   
-    Route::get('/pass/social', Social::class)->name('pass.social');   
-    Route::get('/pass/business', Business::class)->name('pass.business');   
+    Route::get('/dashboard', PassDashboard::class)->name('pass.dashboard');   
+    Route::get('/cv', Cv::class)->name('pass.cv');   
+    Route::get('/password-reset', Reset::class)->name('pass.reset');   
+    Route::get('/profile', Profile::class)->name('pass.profile');   
+    Route::get('/social', Social::class)->name('pass.social');   
+    Route::get('/business', Business::class)->name('pass.business');   
 });
+ Route::get('/pass/{slug}', Details::class)->name('pass.details');    

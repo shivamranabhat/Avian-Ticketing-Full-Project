@@ -11,6 +11,7 @@ class Edit extends Component
     public $slug;
     public $account;
 
+    public $name = '';
     public $email = '';
     public $phone = '';
     public $password = '';
@@ -19,6 +20,7 @@ class Edit extends Component
     public function mount(string $slug)
     {
         $this->account = User::whereSlug($this->slug)->first();
+        $this->name   = $this->account->name;
         $this->email   = $this->account->email;
         $this->phone   = $this->account->phone ?? '';
     }

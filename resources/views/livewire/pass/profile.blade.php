@@ -8,7 +8,7 @@
 
                 <div class="flex justify-between">
                     <h5 class="font-bold text-2xl">My Profile</h5>
-                    <a href="#">
+                    <a href="{{route('pass.dashboard')}}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor"
                             class="size-7 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-white rounded-full">
