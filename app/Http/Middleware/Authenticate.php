@@ -10,7 +10,7 @@ class Authenticate
     public function handle(Request $request, Closure $next)
     {
 
-        if (!Auth::check() || Auth::user()->platform !== 'admin') {
+        if (!Auth::check() || Auth::user()->platform !== 'Admin') {
            return redirect()->route('admin.signin');
         }
 

@@ -61,7 +61,7 @@ class ProfileCard extends Component
     public function updatedSidePic()
     {
         $this->validate([
-            'sidePic' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'sidePic' => 'required|image|mimes:jpeg,png,jpg,gif,heic,webp|max:5120',
         ]);
 
         $this->saveImage('side_pic', 'side_pics', $this->sidePic);

@@ -13,7 +13,7 @@ class Details extends Component
     #[Layout('layouts.main')]
     public function mount()
     {
-        $this->details = User::where('slug', $this->slug)->firstOrFail();
+        $this->details = User::whereSlug($this->slug)->firstOrFail();
         
     }
     public function render()

@@ -15,6 +15,7 @@ class Profile extends Component
     public $email;
     public $phone;
     public $location;
+    public $extra_details;
     #[Layout('layouts.main')]
 
     /**
@@ -30,6 +31,7 @@ class Profile extends Component
 
         $this->bio = optional($user->details)->bio;
         $this->location = optional($user->details)->location;
+        $this->extra_details = optional($user->details)->extra_details;
     }
 
     /**
@@ -48,6 +50,7 @@ class Profile extends Component
             'phone' => ['nullable', 'string', 'max:20'],
             'bio' => ['nullable', 'string', 'max:255'],
             'location' => ['nullable', 'string', 'max:255'],
+            'extra_details' => 'nullable',
         ];
     }
 
@@ -76,11 +79,13 @@ class Profile extends Component
             $user->details()->create([
                 'bio' => $this->bio,
                 'location' => $this->location,
+                'extra_details'=>$this->extra_details,
             ]);
         } else {
             $user->details->update([
                 'bio' => $this->bio,
                 'location' => $this->location,
+                'extra_details'=>$this->extra_details,
             ]);
         }
 

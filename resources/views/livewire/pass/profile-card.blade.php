@@ -23,7 +23,7 @@
 
         <!-- Dropdown Menu -->
         <div x-show="open" @click.away="open = false" x-transition
-            class="absolute right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl py-2 z-50 text-sm border border-gray-100"
+            class="absolute right-[-8rem] md:right-0 mt-3 w-56 bg-white rounded-2xl shadow-2xl py-2 z-50 text-sm border border-gray-100"
             style="transform-origin: top right;">
             <div class="px-4 py-2 text-xs font-semibold text-gray-500 tracking-widest border-b">CHANGE PICTURE</div>
 

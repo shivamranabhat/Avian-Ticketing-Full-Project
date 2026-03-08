@@ -16,9 +16,17 @@ use App\Livewire\Admin\Account\Create as AccountCreate;
 use App\Livewire\Admin\Account\Edit as AccountEdit;
 use App\Livewire\Admin\Account\Index as AccountIndex;
 
+use App\Livewire\Admin\Faq\Create as FaqCreate;
+use App\Livewire\Admin\Faq\Edit as FaqEdit;
+use App\Livewire\Admin\Faq\Index as FaqIndex;
+
 use App\Livewire\Admin\Account\Details\Create as DetailsCreate;
 use App\Livewire\Admin\Account\Details\Edit as DetailsEdit;
 use App\Livewire\Admin\Account\Details\Index as DetailsIndex;
+
+use App\Livewire\Admin\Testimonial\Create as TestimonialCreate;
+use App\Livewire\Admin\Testimonial\Edit as TestimonialEdit;
+use App\Livewire\Admin\Testimonial\Index as TestimonialIndex;
 
 use App\Livewire\Admin\Auth\Signin as AdminSignin;
 
@@ -61,6 +69,16 @@ Route::prefix('/dashboard')->middleware(Authenticate::class)->group(function () 
         Route::get('/account/new', AccountCreate::class)->name('create');   
         Route::get('/account/{slug}', AccountEdit::class)->name('edit');    
     });
+    Route::name('faq.')->group(function () {
+        Route::get('/faqs', FaqIndex::class)->name('index');            
+        Route::get('/faq/new', FaqCreate::class)->name('create');   
+        Route::get('/faq/{slug}', FaqEdit::class)->name('edit');    
+    });
+    Route::name('testimonial.')->group(function () {
+        Route::get('/testimonials', TestimonialIndex::class)->name('index');            
+        Route::get('/testimonial/new', TestimonialCreate::class)->name('create');   
+        Route::get('/testimonial/{slug}', TestimonialEdit::class)->name('edit');    
+    });
     
     
 });
@@ -75,4 +93,4 @@ Route::prefix('/dashboard')->middleware(Authenticate::class)->group(function () 
     Route::get('/social', Social::class)->name('pass.social');   
     Route::get('/business', Business::class)->name('pass.business');   
 });
- Route::get('/pass/{slug}', Details::class)->name('pass.details');    
+ Route::get('/{slug}', Details::class)->name('pass.details');    

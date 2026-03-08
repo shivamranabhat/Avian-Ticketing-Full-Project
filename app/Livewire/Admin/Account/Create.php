@@ -15,6 +15,7 @@ class Create extends Component
     public $phone = '';
     public $password = '';
     public $password_confirmation = '';
+    public $is_vip = '';
 
     protected $rules = [
         'name'                  => 'required|string|max:255',
@@ -22,6 +23,7 @@ class Create extends Component
         'phone'                 => 'nullable|string|max:20',
         'password'              => 'required|min:8|confirmed',
         'password_confirmation' => 'required',
+        'is_vip'                => 'nullable',
     ];
 
     public function updated($propertyName)
@@ -33,35 +35,14 @@ class Create extends Component
     {
         $this->validate();
 
-        $baseSlug = Str::slug($this->name);
-
-        // Get all slugs that start with baseSlug
-        $existingSlugs = User::where('slug', 'LIKE', $baseSlug . '%')
-            ->pluck('slug')
-            ->toArray();
-
-        if (!in_array($baseSlug, $existingSlugs)) {
-            $slug = $baseSlug;
-        } else {
-            $max = 1;
-
-            foreach ($existingSlugs as $existingSlug) {
-                if (preg_match('/^' . preg_quote($baseSlug, '/') . '-(\d+)$/', $existingSlug, $matches)) {
-                    $number = (int) $matches[1];
-                    $max = max($max, $number);
-                }
-            }
-
-            $slug = $baseSlug . '-' . ($max + 1);
-        }
-
         User::create([
             'name'     => $this->name,
             'email'    => $this->email,
             'phone'    => $this->phone ?: null,
             'password' => Hash::make($this->password),
             'platform' => 'Pass',
-            'slug'     => $slug,
+            'is_vip'   => $this->is_vip,
+            'slug'     => Str::random(6),
         ]);
 
         session()->flash('success', 'Account created successfully!');

@@ -44,6 +44,11 @@
                     <label class="form-label">Location</label>
                     <input type="text" class="form-control" wire:model.defer="location">
                 </div>
+                <!-- Extra Details -->
+                <div class="col-md-6">
+                    <label class="form-label">Extra Description</label>
+                    <input type="text" class="form-control" wire:model.defer="extra_details">
+                </div>
 
                 <!-- Profile Pic -->
                 <div class="col-md-6">

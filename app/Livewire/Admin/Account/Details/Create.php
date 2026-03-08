@@ -22,6 +22,7 @@ class Create extends Component
     public $cover_pic;
     public $side_pic;
     public $cv;
+    public $extra_details;
 
     public $users = [];
 
@@ -29,6 +30,7 @@ class Create extends Component
     {
         // Load users who don't already have details
         $this->users = User::whereDoesntHave('details')
+        ->where('platform','Pass')
             ->orderBy('name')
             ->get();
     }
@@ -43,6 +45,7 @@ class Create extends Component
             'cover_pic' => 'nullable|image|max:2048',
             'side_pic' => 'nullable|image|max:2048',
             'cv' => 'nullable|mimes:pdf,doc,docx|max:5120',
+            'extra_details'=>'nullable'
         ];
     }
 
@@ -83,6 +86,7 @@ class Create extends Component
                 'cover_pic' => $coverPicPath,
                 'side_pic' => $sidePicPath,
                 'cv' => $cvPath,
+                'extra_details' => $validated['extra_details'],
                 'slug' => $slug,
             ]);
 

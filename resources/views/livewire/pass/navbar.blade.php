@@ -1,6 +1,6 @@
 <div class="px-6 sm:px-16 lg:px-24 xl:px-44">
         <nav
-            class="bg-white border border-[#E9C0E9] md:border-none px-6 py-4 flex items-center justify-between rounded-full navbar">
+            class="bg-white border border-[#E9C0E9] md:border-none px-6 py-1 md:py-4 flex items-center justify-between rounded-full navbar">
             <div class="left-col flex gap-x-18 items-center">
                 <a href="/"><img src="{{asset('assets/pass/images/logo.svg')}}" class="w-14 h-14" alt="logo"></a>
                 
@@ -12,7 +12,7 @@
             </div>
             <div class="right-col flex gap-x-6 items-center">
                 @if (auth()->check())
-                    <a href="{{ route('pass.dashboard') }}" class=" px-6 py-3 rounded-lg cursor-pointer">
+                    <a href="{{ route('pass.details',auth()->user()->slug) }}" class=" px-6 py-3 rounded-lg cursor-pointer">
                         <img src="{{auth()->user()->details && auth()->user()->details->profile_pic ? asset('storage/' . auth()->user()->details->profile_pic) : asset('assets/pass/images/blank-user.png')}}" class="w-10 h-10 rounded-full object-cover" alt="">
                     </a>
                 @else

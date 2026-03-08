@@ -29,8 +29,7 @@
                     <form wire:submit.prevent="save">
 
                         <div class="mt-6 space-y-6">
-
-                            <!-- Display Bio -->
+                           <!-- Display Bio -->
                             <div>
                                 <label class="block text-sm text-gray-600 mb-2">Display Bio</label>
                                 <input type="text" wire:model="bio"
@@ -38,16 +37,6 @@
 
                                 @error('bio') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </div>
-
-                            <!-- Full Name -->
-                            <div>
-                                <label class="block text-sm text-gray-600 mb-2">Full Name</label>
-                                <input type="text" wire:model="name"
-                                    class="w-full bg-[#F7FAFC] border border-[#CBD5E0] rounded-lg px-4 py-3 text-gray-700 focus:outline-none">
-
-                                @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                            </div>
-
                             <!-- Email -->
                             <div>
                                 <label class="block text-sm text-gray-600 mb-2">Email Address</label>
@@ -73,6 +62,13 @@
                                     class="w-full bg-[#F7FAFC] border border-[#CBD5E0] rounded-lg px-4 py-3 text-gray-700 focus:outline-none">
 
                                 @error('location') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                            </div>
+                            <!-- Extra Details -->
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-2">Extra Description</label>
+                                <input type="text" wire:model="extra_details"
+                                    class="w-full bg-[#F7FAFC] border border-[#CBD5E0] rounded-lg px-4 py-3 text-gray-700 focus:outline-none">
+
                             </div>
 
                             <button type="submit" wire:loading.attr="disabled" wire:target="save" class="text-white flex items-center gap-x-4 rounded-lg 

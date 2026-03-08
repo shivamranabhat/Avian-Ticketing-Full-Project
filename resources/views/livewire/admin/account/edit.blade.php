@@ -82,6 +82,22 @@
                 </div>
 
             </div>
+            <!-- Is VIP? Dropdown -->
+            <div class="col-12 mt-2">
+                <label for="is_vip" class="form-label">Is VIP? <span class="text-danger">*</span></label>
+                <select 
+                    class="form-select @error('is_vip') is-invalid @enderror"
+                    wire:model.live="is_vip"
+                    id="is_vip">
+                    <option value="" disabled selected>Select option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                @error('is_vip')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
 
             <div class="border-top px-4 py-4 mt-4 d-flex justify-content-end gap-2">
                 <a href="{{ route('account.index') }}" class="btn btn-secondary">Cancel</a>

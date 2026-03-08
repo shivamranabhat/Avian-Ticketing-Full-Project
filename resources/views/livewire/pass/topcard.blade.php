@@ -10,9 +10,7 @@
 
             <!-- Desktop Center Text -->
             <div class="absolute inset-0 hidden md:flex items-center justify-center text-center">
-                <h5 class="text-white text-2xl font-semibold">
-                    {{auth()->user()->details->bio ?? 'No bio available'}}
-                </h5>
+               
             </div>
         </div>
     </div>
@@ -29,7 +27,7 @@
                 <a href="tel:{{auth()->user()->phone ?? 'XXXXXXXXXX'}}" class="flex gap-x-6"> {{auth()->user()->phone ?? 'XXXXXXXXXX'}} <span> {{auth()->user()->details->location ?? 'No location available'}}</span></a>
             </div>
         </div>
-        <a href="#"
+        <a href="{{route('pass.dashboard')}}"
             class="bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-white text-sm px-4 py-2 rounded flex items-center gap-x-1"><svg
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">

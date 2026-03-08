@@ -21,6 +21,7 @@ class Edit extends Component
     public $cover_pic;
     public $side_pic;
     public $cv;
+    public $extra_details;
 
     // Existing file paths
     public $existing_profile_pic;
@@ -52,6 +53,7 @@ class Edit extends Component
             'cover_pic' => 'nullable|image|max:2048',
             'side_pic' => 'nullable|image|max:2048',
             'cv' => 'nullable|mimes:pdf,doc,docx|max:5120',
+            'extra_details'=>'nullable'
         ];
     }
 
@@ -122,6 +124,7 @@ class Edit extends Component
                 'cover_pic' => $this->existing_cover_pic,
                 'side_pic' => $this->existing_side_pic,
                 'cv' => $this->existing_cv,
+                'extra_details'=>$this->extra_details
             ]);
 
             DB::commit();

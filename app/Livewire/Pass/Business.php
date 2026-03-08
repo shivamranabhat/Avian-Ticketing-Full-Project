@@ -41,8 +41,8 @@ class Business extends Component
     public function saveLinks()
     {
         $this->validate([
-            'links.*.name' => 'required|string|max:100',
-            'links.*.url'  => 'required|url|max:255',
+            'links.*.name' => 'required|string',
+            'links.*.url'  => 'required|url',
         ], [
             'links.*.name.required' => 'Platform name is required.',
             'links.*.url.required'  => 'URL is required.',

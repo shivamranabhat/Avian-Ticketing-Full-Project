@@ -39,6 +39,8 @@ class Index extends Component
                       ->orWhere('phone', 'like', '%' . $this->search . '%')
                       ->orWhere('slug', 'like', '%' . $this->search . '%');
             })
+            ->where('platform', 'Pass')
+            ->orWhere('platform', 'Ticket')
             ->latest()
             ->paginate($this->perPage);
 

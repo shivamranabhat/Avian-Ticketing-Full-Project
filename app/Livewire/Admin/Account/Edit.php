@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Account;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Edit extends Component
@@ -16,6 +17,7 @@ class Edit extends Component
     public $phone = '';
     public $password = '';
     public $password_confirmation = '';
+    public $is_vip='';
 
     public function mount(string $slug)
     {
@@ -33,6 +35,7 @@ class Edit extends Component
             'phone'                 => 'nullable|string|max:20',
             'password'              => 'nullable|min:8|confirmed',
             'password_confirmation' => 'nullable|required_with:password',
+            'is_vip'                => 'nullable',
         ];
     }
 
@@ -50,6 +53,7 @@ class Edit extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone ?: null,
+            'is_vip'   => $this->is_vip,
         ];
 
         // Only update password if provided
@@ -57,7 +61,7 @@ class Edit extends Component
             $data['password'] = Hash::make($this->password);
         }
 
-        $this->account->update($data);
+        $this->account->update($data+['slug'=>Str::random(6)]);
 
         session()->flash('success', 'Account updated successfully!');
 

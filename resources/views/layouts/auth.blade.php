@@ -45,11 +45,9 @@
                         <div class="row">
                             <div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
                                 <div class="card-sigin">
-                                    <div class="mb-5 d-flex"> <a href="index.html" class="header-logo"><img
-                                                src="../assets/images/brand-logos/desktop-logo.png"
-                                                class="desktop-logo ht-40" alt="logo"> <img
-                                                src="../assets/images/brand-logos/desktop-white.png"
-                                                class="desktop-white ht-40" alt="logo"> </a> </div>
+                                    <div class="mb-5 d-flex"> <a href="index.html"><img
+                                                src="{{asset('main/images/logo.png')}}"
+                                                class="ht-40" width="100" alt="logo"> </a> </div>
                                     <div class="card-sigin">
                                         {{ $slot }}
                                     </div>

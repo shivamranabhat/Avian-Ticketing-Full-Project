@@ -3,18 +3,18 @@
     <div class="relative banner-section lg:px-24 xl:px-44">
 
         <!-- Banner -->
-        <div class="relative w-full h-[40vh] sm:h-[60vh] md:h-[70vh] overflow-hidden md:rounded-xl">
+        <div class="relative w-full h-[30vh] sm:h-[40vh] md:h-[70vh] overflow-hidden md:rounded-xl">
 
-            <img src="{{$details->cover_pic ? asset('storage/' . $details->cover_pic) : asset('assets/pass/images/blank-cover.jpg')}}"
-                class="w-full h-full object-cover object-center" alt="" wire:poll.keep-alive>
+            <img src="{{$details->details ? asset('storage/' . $details->details->cover_pic) : asset('assets/pass/images/blank-cover.jpg')}}"
+                class="w-full h-full object-cover object-center" alt="Cover Photo">
 
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/50"></div>
 
             <!-- Desktop Center Text -->
-            <div class="absolute inset-0 hidden md:flex items-center justify-center text-center">
+            <div class="absolute inset-0 flex items-center justify-center text-center">
                 <h5 class="text-white text-2xl font-semibold">
-                    {{$details->bio ?? 'No bio available'}}
+                    {{$details->is_vip == 'Yes' ? 'Catwalk Club Vip Member' : ''}}
                 </h5>
             </div>
         </div>
@@ -27,9 +27,8 @@
 
                 <!-- Avatar -->
                 <div class="absolute -top-16 left-1/2 -translate-x-1/2">
-                    <img src="{{ $details->profile_pic ? asset('storage/' . $details->profile_pic) : asset('assets/pass/images/blank-user.png')}}"
-                        alt="Profile" class="w-32 h-32 object-cover rounded-full border-4 border-white"
-                        wire:poll.keep-alive>
+                    <img src="{{ $details->details ? asset('storage/' . $details->details->profile_pic) : asset('assets/pass/images/blank-user.png')}}"
+                        alt="Profile Photo" class="w-32 h-32 object-cover rounded-full border-4 border-white">
                 </div>
 
                 <!-- Name -->
@@ -37,7 +36,7 @@
 
                 <!-- Title -->
                 <p class="mt-2 text-lg italic text-white/90">
-                    {{$details->bio ?? 'No bio available'}}
+                    {{$details->details->bio ?? 'No bio available'}}
                 </p>
 
                 <!-- Divider -->
@@ -53,7 +52,7 @@
 
                 <!-- Location -->
                 <p class="text-lg text-white/90">
-                    {{$details->location ?? 'No location available'}}
+                    {{$details->details->location ?? 'No location available'}}
                 </p>
 
             </div>
@@ -66,17 +65,17 @@
     <div class="profile hidden md:flex items-center justify-between px-6 sm:px-16 lg:px-24 xl:px-44">
         <div class="flex items-center gap-x-6">
             <div class="img">
-                <img src="{{ $details->profile_pic ? asset('storage/' . $details->profile_pic) : asset('assets/pass/images/blank-user.png') }}"
-                    class="w-[6rem] h-[6rem] object-cover rounded-full" alt="" wire:poll.keep-alive>
+                <img src="{{ $details->details ? asset('storage/' . $details->details->profile_pic) : asset('assets/pass/images/blank-user.png') }}"
+                    class="w-[6rem] h-[6rem] object-cover rounded-full" alt="Profile Photo">
             </div>
             <div class="flex flex-col">
                 <h5 class="text-lg text-[#1E2330] font-bold">{{ $details->name ?? 'XXXXXX' }}</h5>
-                <p class="flex gap-x-6">{{ $details->bio ?? 'No bio available' }}</p>
+                <p class="flex gap-x-6">{{ $details->details->bio ?? 'No bio available' }}</p>
                 <a href="tel:{{$details->phone ?? 'XXXXXXXXXX'}}" class="flex gap-x-6">{{$details->phone ??
                     'XXXXXXXXXX'}} <span>{{$details->details->location ?? 'No location available'}}</span></a>
             </div>
         </div>
-        <a href="#"
+        <a href="{{route('pass.dashboard')}}"
             class="bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-white text-sm px-4 py-2 rounded flex items-center gap-x-1"><svg
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
@@ -93,35 +92,44 @@
                 <h5 class="font-bold text-2xl">Social Links</h5>
                 <div class="links flex flex-col gap-y-4">
                     @forelse($details->socialLinks as $link)
+                        @php
+                            $username = \Illuminate\Support\Str::after($link['url'], '.com/');
+                        @endphp
+                
                         <div class="child-link flex justify-between items-center">
                             <div class="flex flex-col">
                                 <span class="italic">{{ ucfirst($link['name']) }}</span>
-                                <h5 class="font-semibold">{{ $link['url'] }}</h5>
+                                <h5 class="font-semibold">{{ '@' . $username }}</h5>
                             </div>
+                
                             <a href="{{ $link['url'] }}" target="_blank"
-                                class="bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-white text-sm px-4 py-2 rounded">Follow</a>
+                                class="bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-white text-sm px-4 py-2 rounded">
+                                Follow
+                            </a>
                         </div>
+                
                         @if (!$loop->last)
-                        <div class="w-full h-px bg-[#969695]"></div>
+                            <div class="w-full h-px bg-[#969695]"></div>
                         @endif
                     @empty
-                    <p class="text-sm text-gray-500">No social links available.</p>
+                        <p class="text-sm text-gray-500">No social links available.</p>
                     @endforelse
-                   
                 </div>
             </div>
             <div class="bg-[#fbf3f3] rounded-lg flex flex-col gap-y-6 p-8">
                 <h5 class="font-bold text-2xl">Professional Bio</h5>
                 <div class="links flex flex-col gap-y-4">
+                    @if($details->details)
                     <div class="child-link flex justify-between items-center">
                         <div class="flex flex-col">
                             <span class="italic text-xs">Work Experience</span>
                             <h5 class="font-semibold">Download CV</h5>
                             <span class="italic text-xs">View Details</span>
                         </div>
-                        <a href="{{asset('storage/' . $details->cv) }}" target="_blank"
+                        <a href="{{asset('storage/' . $details->details->cv) }}" target="_blank"
                             class="bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-white text-sm px-4 py-2 rounded">Download</a>
                     </div>
+                    @endif
                     <div class="w-full h-px bg-[#969695]"></div>
                     @forelse($details->businessLinks as $business)
                     <div class="child-link flex justify-between items-center">
@@ -143,15 +151,14 @@
                 </div>
             </div>
             <div class="flex flex-col gap-y-4" id="extras">
+                @if($details->details)
                 <div class="bg-[#fbf3f3] p-4 rounded-lg flex flex-col gap-y-1">
-                    <h5 class="text-lg font-bold text-primary">
-                        NSIC Exhibition Ground Gate 6
-                    </h5>
+                    
                     <p class="text-sm text-[#45474D] font-semibold">
-                        509/5, Ma Anandmayee Marg, Govind Puri, Giri Nagar, NSIC Estate, Okhla Phase III, Okhla
-                        Industrial Estate, New Delhi, Delhi 110019, India
+                       {{ $details->details->extra_details}}
                     </p>
                 </div>
+                @endif
                 <div class="accordions flex flex-col gap-y-6">
                     <div class="accordion-item rounded-lg border border-gray-200 bg-[#fbf3f3] overflow-hidden">
                         <button
@@ -237,7 +244,7 @@
             </div>
         </div>
         <div class="image hidden lg:flex ">
-            <img src="{{ $details->side_pic ? asset('storage/'.$details->side_pic) : asset('assets/images/default-image.jpg') }}" class="w-full h-[70vh] object-cover rounded-lg" id="right-sticky-col"
+            <img src="{{ $details->details ? asset('storage/'.$details->details->side_pic) : asset('assets/pass/images/Zayn.png') }}" class="w-full h-[70vh] object-cover rounded-lg" id="right-sticky-col"
                 alt="">
         </div>
     </div>

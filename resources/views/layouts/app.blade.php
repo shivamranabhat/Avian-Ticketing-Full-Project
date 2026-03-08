@@ -453,6 +453,7 @@
                                                     Management</span></li>
 
 
+
                                             <li class="slide has-sub"> <a href="javascript:void(0);"
                                                     class="side-menu__item {{request()->segment(2) == 'events' || request()->segment(2) == 'event' ? 'active' : ''}}">
                                                     <svg viewBox="0 0 24 24" fill="none" class="icon side-menu__icon"
@@ -492,95 +493,12 @@
                                                 </ul>
 
                                             </li>
-                                            <!-- Start::slide__category -->
-                                            <li class="slide__category"><span class="category-name">Stock
-                                                    Management</span></li>
-                                            <!-- Start::slide -->
-                                            <li class="slide"> <a href=""
-                                                    class="side-menu__item {{request()->segment(1) == 'vendors' || request()->segment(1) == 'vendor' ? 'active' : ''}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="bi bi-truck side-menu__icon" fill="currentColor"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2" />
-                                                    </svg>
-                                                    <span class="side-menu__label">Vendor</span> </a>
 
-                                            </li> <!-- End::slide -->
-
-
-                                            <li class="slide"> <a href=""
-                                                    class="side-menu__item {{request()->segment(1) == 'requisitions' || request()->segment(1) == 'requisition' ? 'active' : ''}}">
-
-                                                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
-                                                        class="side-menu__icon" fill="none">
-                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                            stroke-linejoin="round"></g>
-                                                        <g id="SVGRepo_iconCarrier">
-                                                            <g fill="currentColor" fill-rule="evenodd"
-                                                                clip-rule="evenodd">
-                                                                <path
-                                                                    d="M5 6.905A3.001 3.001 0 004.25 1a3 3 0 00-.75 5.905V14A.75.75 0 005 14V6.905zM2.75 4a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM12.5 5.25v3.595a3.001 3.001 0 01-.75 5.905A3 3 0 0111 8.845V5.25a.75.75 0 00-.75-.75H9A.75.75 0 019 3h1.25a2.25 2.25 0 012.25 2.25zm-2.25 6.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z">
-                                                                </path>
-                                                            </g>
-                                                        </g>
-                                                    </svg>
-                                                    <span class="side-menu__label">Requisition</span> </a>
-
-                                            </li> <!-- End::slide -->
-
-                                            <li class="slide"> <a href=""
-                                                    class="side-menu__item {{request()->segment(1) == 'bills' || request()->segment(1) == 'bill' ? 'active' : ''}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
-                                                        fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
-                                                        <path
-                                                            d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
-                                                    </svg>
-
-                                                    <span class="side-menu__label">Bills</span> </a>
-
-                                            </li> <!-- End::slide -->
-                                            <li class="slide"> <a href=""
-                                                    class="side-menu__item {{request()->segment(1) == 'payments' || request()->segment(1) == 'payment' ? 'active' : ''}}">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
-                                                        fill="currentColor" class="bi bi-wallet-fill"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z" />
-                                                        <path
-                                                            d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z" />
-                                                    </svg>
-
-                                                    <span class="side-menu__label">Payments</span> </a>
-
-                                            </li> <!-- End::slide -->
-                                            <li class="slide"> <a href=""
-                                                    class="side-menu__item {{request()->segment(1) == 'logs' || request()->segment(1) == 'log' ? 'active' : ''}}">
-
-                                                    <svg class="side-menu__icon" fill="currentColor" viewBox="0 0 32 32"
-                                                        version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                            stroke-linejoin="round"></g>
-                                                        <g id="SVGRepo_iconCarrier">
-                                                            <title>logs</title>
-                                                            <path
-                                                                d="M0 24q0 0.832 0.576 1.44t1.44 0.576h1.984q0 2.496 1.76 4.224t4.256 1.76h6.688q-2.144-1.504-3.456-4h-3.232q-0.832 0-1.44-0.576t-0.576-1.408v-20q0-0.832 0.576-1.408t1.44-0.608h16q0.8 0 1.408 0.608t0.576 1.408v7.232q2.496 1.312 4 3.456v-10.688q0-2.496-1.76-4.256t-4.224-1.76h-16q-2.496 0-4.256 1.76t-1.76 4.256h-1.984q-0.832 0-1.44 0.576t-0.576 1.408 0.576 1.44 1.44 0.576h1.984v4h-1.984q-0.832 0-1.44 0.576t-0.576 1.408 0.576 1.44 1.44 0.576h1.984v4h-1.984q-0.832 0-1.44 0.576t-0.576 1.408zM10.016 24h2.080q0-0.064-0.032-0.416t-0.064-0.576 0.064-0.544 0.032-0.448h-2.080v1.984zM10.016 20h2.464q0.288-1.088 0.768-1.984h-3.232v1.984zM10.016 16h4.576q0.992-1.216 2.112-1.984h-6.688v1.984zM10.016 12h16v-1.984h-16v1.984zM10.016 8h16v-1.984h-16v1.984zM14.016 23.008q0 1.824 0.704 3.488t1.92 2.88 2.88 1.92 3.488 0.704 3.488-0.704 2.88-1.92 1.92-2.88 0.704-3.488-0.704-3.488-1.92-2.88-2.88-1.92-3.488-0.704-3.488 0.704-2.88 1.92-1.92 2.88-0.704 3.488zM18.016 23.008q0-2.080 1.44-3.52t3.552-1.472 3.52 1.472 1.472 3.52q0 2.080-1.472 3.52t-3.52 1.472-3.552-1.472-1.44-3.52zM22.016 23.008q0 0.416 0.288 0.704t0.704 0.288h1.984q0.416 0 0.704-0.288t0.32-0.704-0.32-0.704-0.704-0.288h-0.992v-0.992q0-0.416-0.288-0.704t-0.704-0.32-0.704 0.32-0.288 0.704v1.984z">
-                                                            </path>
-                                                        </g>
-                                                    </svg>
-
-                                                    <span class="side-menu__label">Logs</span> </a>
-
-                                            </li> <!-- End::slide -->
 
                                             <!-- Start::slide__account -->
-                                            <li class="slide__category"><span class="category-name">Account
+                                            <li class="slide__category"><span class="category-name">Pass
                                                     Management</span></li>
+                                            
                                             <li class="slide has-sub"> <a href="javascript:void(0);"
                                                     class="side-menu__item {{request()->segment(2) == 'accounts' || request()->segment(2) == 'account' ? 'active' : ''}}">
                                                     <svg viewBox="0 0 1024 1024" class="side-menu__icon"
@@ -618,123 +536,29 @@
                                                 </ul>
 
                                             </li>
+                                            <li class="slide"> <a href="{{route('faq.index')}}"
+                                                    class="side-menu__item {{request()->segment(2) == 'faq' || request()->segment(2) == 'faqs' ? 'active' : ''}}">
+                                                    
+                                                    <svg fill="currentColor" class="side-menu__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M12,1A11,11,0,1,0,23,12,11.013,11.013,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9.011,9.011,0,0,1,12,21Zm1-4.5v2H11v-2Zm3-7a3.984,3.984,0,0,1-1.5,3.122A3.862,3.862,0,0,0,13.063,15H11.031a5.813,5.813,0,0,1,2.219-3.936A2,2,0,0,0,13.1,7.832a2.057,2.057,0,0,0-2-.14A1.939,1.939,0,0,0,10,9.5,1,1,0,0,1,8,9.5V9.5a3.909,3.909,0,0,1,2.319-3.647,4.061,4.061,0,0,1,3.889.315A4,4,0,0,1,16,9.5Z"></path></g></svg>
 
+                                                    <span class="side-menu__label">FAQs</span> 
+                                                </a> 
+                                            </li>
+                                            <li class="slide"> <a href="{{route('testimonial.index')}}"
+                                                    class="side-menu__item {{request()->segment(2) == 'testimonials' || request()->segment(2) == 'testimonial' ? 'active' : ''}}">
+                                                    
+                                                    <svg fill="currentColor" class="side-menu__icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490 490" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M446.52,174.433c-27.254-20.921-63.341-32.443-101.616-32.443c-23.143,0-45.482,4.22-65.555,12.175 c-10.033-19.097-26.771-36.009-48.063-48.316c-25.068-14.491-54.873-22.15-86.189-22.15c-38.275,0-74.362,11.522-101.616,32.443 C15.441,137.664,0,166.525,0,197.406c0,27.813,12.723,54.284,35.936,75.01l0.395,67.755c0.02,3.536,1.814,6.968,4.961,8.58 c3.736,1.915,7.299,1.457,9.912,0.094l70.288-39.229c7.793,0.996,15.715,1.5,23.605,1.5c0.002,0,0.004,0,0.006,0 c22.85,0,45.271-4.194,65.465-12.174c7.369,14.116,18.396,27.029,32.719,38.024c27.254,20.921,63.342,32.442,101.617,32.442 c7.928,0,15.895-0.51,23.729-1.516l70.376,37.09c3.994,2.034,6.955,1.537,9.803-0.27c2.949-1.871,4.838-5.024,4.859-8.518 l0.395-65.485C477.277,309.984,490,283.511,490,255.699C490,224.818,474.559,195.958,446.52,174.433z M145.102,291.115 c-0.002,0-0.006,0-0.006,0c-8.143,0-16.324-0.602-24.314-1.786c-2.861-0.422-5.617,0.407-7.713,2.082L56.23,323.135l-0.32-55.185 c0.004-0.2,0-0.402-0.01-0.604c-0.131-2.81-1.438-5.435-3.604-7.231C31.471,242.833,20,220.562,20,197.406 c0-51.671,56.119-93.708,125.097-93.708c51.104,0,97.307,23.872,116.152,59.002c-6.324,3.5-12.334,7.413-17.963,11.733 c-28.039,21.524-43.48,50.385-43.48,81.266c0,8.404,1.154,16.657,3.383,24.656C185.337,287.409,165.442,291.115,145.102,291.115z M437.703,318.408c-2.164,1.796-3.471,4.423-3.602,7.232c-0.01,0.182-0.012,0.363-0.012,0.544l-0.32,53.429l-57.021-30.051 c-2.072-1.581-4.75-2.352-7.533-1.94c-7.992,1.186-16.172,1.787-24.313,1.787c-56.488,0-104.342-28.194-119.824-66.782 c-0.064-0.188-0.146-0.371-0.223-0.557c-3.281-8.369-5.051-17.218-5.051-26.371c0-33.247,23.238-62.503,58.182-79.141 c0.025-0.01,0.051-0.016,0.076-0.026c0.391-0.154,0.762-0.338,1.123-0.535c19.109-8.874,41.627-14.007,65.717-14.007 c68.978,0,125.097,42.038,125.097,93.709C470,278.854,458.529,301.125,437.703,318.408z"></path> <path d="M403.65,222.195H286.155c-5.523,0-10,4.477-10,10c0,5.523,4.477,10,10,10H403.65c5.521,0,10-4.477,10-10 C413.65,226.672,409.172,222.195,403.65,222.195z"></path> <path d="M403.65,267.469H286.155c-5.523,0-10,4.477-10,10c0,5.523,4.477,10,10,10H403.65c5.521,0,10-4.477,10-10 C413.65,271.946,409.172,267.469,403.65,267.469z"></path> </g> <g> <path d="M446.52,174.433c-27.254-20.921-63.341-32.443-101.616-32.443c-23.143,0-45.482,4.22-65.555,12.175 c-10.033-19.097-26.771-36.009-48.063-48.316c-25.068-14.491-54.873-22.15-86.189-22.15c-38.275,0-74.362,11.522-101.616,32.443 C15.441,137.664,0,166.525,0,197.406c0,27.813,12.723,54.284,35.936,75.01l0.395,67.755c0.02,3.536,1.814,6.968,4.961,8.58 c3.736,1.915,7.299,1.457,9.912,0.094l70.288-39.229c7.793,0.996,15.715,1.5,23.605,1.5c0.002,0,0.004,0,0.006,0 c22.85,0,45.271-4.194,65.465-12.174c7.369,14.116,18.396,27.029,32.719,38.024c27.254,20.921,63.342,32.442,101.617,32.442 c7.928,0,15.895-0.51,23.729-1.516l70.376,37.09c3.994,2.034,6.955,1.537,9.803-0.27c2.949-1.871,4.838-5.024,4.859-8.518 l0.395-65.485C477.277,309.984,490,283.511,490,255.699C490,224.818,474.559,195.958,446.52,174.433z M145.102,291.115 c-0.002,0-0.006,0-0.006,0c-8.143,0-16.324-0.602-24.314-1.786c-2.861-0.422-5.617,0.407-7.713,2.082L56.23,323.135l-0.32-55.185 c0.004-0.2,0-0.402-0.01-0.604c-0.131-2.81-1.438-5.435-3.604-7.231C31.471,242.833,20,220.562,20,197.406 c0-51.671,56.119-93.708,125.097-93.708c51.104,0,97.307,23.872,116.152,59.002c-6.324,3.5-12.334,7.413-17.963,11.733 c-28.039,21.524-43.48,50.385-43.48,81.266c0,8.404,1.154,16.657,3.383,24.656C185.337,287.409,165.442,291.115,145.102,291.115z M437.703,318.408c-2.164,1.796-3.471,4.423-3.602,7.232c-0.01,0.182-0.012,0.363-0.012,0.544l-0.32,53.429l-57.021-30.051 c-2.072-1.581-4.75-2.352-7.533-1.94c-7.992,1.186-16.172,1.787-24.313,1.787c-56.488,0-104.342-28.194-119.824-66.782 c-0.064-0.188-0.146-0.371-0.223-0.557c-3.281-8.369-5.051-17.218-5.051-26.371c0-52.682,56.998-93.709,125.098-93.709 S470,204.028,470,255.699C470,278.854,458.529,301.125,437.703,318.408z"></path> <path d="M403.65,222.195H286.155c-5.523,0-10,4.477-10,10c0,5.523,4.477,10,10,10H403.65c5.521,0,10-4.477,10-10 C413.65,226.672,409.172,222.195,403.65,222.195z"></path> <path d="M403.65,267.469H286.155c-5.523,0-10,4.477-10,10c0,5.523,4.477,10,10,10H403.65c5.521,0,10-4.477,10-10 C413.65,271.946,409.172,267.469,403.65,267.469z"></path> </g> </g> </g></svg>
 
-                                            <!-- Start::slide__category -->
-                                            <li class="slide__category"><span class="category-name">Vehicle
-                                                    Management</span>
-                                            </li> <!-- End::slide__category -->
-
-
-                                            <!-- Start::slide__category -->
-                                            <li class="slide__category"><span class="category-name">Components</span>
-                                            </li> <!-- End::slide__category -->
-                                            <!-- Start::slide -->
-                                            <li class="slide has-sub"> <a href="javascript:void(0);"
-                                                    class="side-menu__item"> <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="side-menu__icon" viewBox="0 0 24 24">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z"
-                                                            opacity=".3"></path>
-                                                        <path
-                                                            d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z">
-                                                        </path>
-                                                    </svg> <span class="side-menu__label">Forms</span> <i
-                                                        class="fe fe-chevron-right side-menu__angle"></i> </a>
-                                                <ul class="slide-menu child1"
-                                                    style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate3d(119.5px, 660px, 0px);"
-                                                    data-popper-placement="bottom">
-                                                    <li class="slide side-menu__label1"> <a
-                                                            href="javascript:void(0);">Forms</a> </li>
-                                                    <li class="slide has-sub"> <a href="javascript:void(0);"
-                                                            class="side-menu__item">Form Elements <i
-                                                                class="fe fe-chevron-right side-menu__angle"></i></a>
-                                                        <ul class="slide-menu child2">
-                                                            <li class="slide"> <a href="form-inputs.html"
-                                                                    class="side-menu__item">Inputs</a> </li>
-                                                            <li class="slide"> <a href="form-check-radios.html"
-                                                                    class="side-menu__item">Checks &amp; Radios</a>
-                                                            </li>
-                                                            <li class="slide"> <a href="form-input-group.html"
-                                                                    class="side-menu__item">Input Group</a> </li>
-                                                            <li class="slide"> <a href="form-select.html"
-                                                                    class="side-menu__item">Form Select</a> </li>
-                                                            <li class="slide"> <a href="form-range.html"
-                                                                    class="side-menu__item">Range Slider</a> </li>
-                                                            <li class="slide"> <a href="form-input-masks.html"
-                                                                    class="side-menu__item">Input Masks</a> </li>
-                                                            <li class="slide"> <a href="form-file-uploads.html"
-                                                                    class="side-menu__item">File Uploads</a> </li>
-                                                            <li class="slide"> <a href="form-dateTime-pickers.html"
-                                                                    class="side-menu__item">Date,Time Picker</a> </li>
-                                                            <li class="slide"> <a href="form-color-pickers.html"
-                                                                    class="side-menu__item">Color Pickers</a> </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="slide"> <a href="floating-labels.html"
-                                                            class="side-menu__item">Floating Labels</a> </li>
-                                                    <li class="slide"> <a href="form-layout.html"
-                                                            class="side-menu__item">Form Layouts</a> </li>
-                                                    <li class="slide has-sub"> <a href="javascript:void(0);"
-                                                            class="side-menu__item">Form Editors <i
-                                                                class="fe fe-chevron-right side-menu__angle"></i></a>
-                                                        <ul class="slide-menu child2">
-                                                            <li class="slide"> <a href="quill_editor.html"
-                                                                    class="side-menu__item">Quill Editor</a> </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="slide"> <a href="form-validation.html"
-                                                            class="side-menu__item">Validation</a> </li>
-                                                    <li class="slide"> <a href="form-select2.html"
-                                                            class="side-menu__item">Select2</a> </li>
-                                                </ul>
-                                            </li> <!-- End::slide -->
-                                            <!-- Start::slide -->
-                                            <li class="slide has-sub"> <a href="javascript:void(0);"
-                                                    class="side-menu__item"> <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="side-menu__icon" viewBox="0 0 24 24">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M5 5h15v3H5zm12 5h3v9h-3zm-7 0h5v9h-5zm-5 0h3v9H5z"
-                                                            opacity=".3"></path>
-                                                        <path
-                                                            d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 19H5v-9h3v9zm7 0h-5v-9h5v9zm5 0h-3v-9h3v9zm0-11H5V5h15v3z">
-                                                        </path>
-                                                    </svg> <span class="side-menu__label">Tables</span> <i
-                                                        class="fe fe-chevron-right side-menu__angle"></i> </a>
-                                                <ul class="slide-menu child1"
-                                                    style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate3d(119.5px, 702px, 0px);"
-                                                    data-popper-placement="bottom">
-                                                    <li class="slide side-menu__label1"> <a
-                                                            href="javascript:void(0);">Tables</a> </li>
-                                                    <li class="slide"> <a href="tables.html"
-                                                            class="side-menu__item">Tables</a> </li>
-                                                    <li class="slide"> <a href="grid-tables.html"
-                                                            class="side-menu__item">Grid JS Tables</a> </li>
-                                                    <li class="slide"> <a href="data-tables.html"
-                                                            class="side-menu__item">Data Tables</a> </li>
-                                                </ul>
-                                            </li> <!-- End::slide -->
-                                            <!-- Start::slide -->
-                                            <li class="slide"> <a href="landing-page.html" class="side-menu__item"> <svg
-                                                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
-                                                        viewBox="0 0 24 24">
-                                                        <path d="M0 0h24v24H0z" fill="none"></path>
-                                                        <path
-                                                            d="M12 4.02C7.6 4.02 4.02 7.6 4.02 12S7.6 19.98 12 19.98s7.98-3.58 7.98-7.98S16.4 4.02 12 4.02zM11.39 19v-5.5H8.25l4.5-8.5v5.5h3L11.39 19z"
-                                                            opacity=".3"></path>
-                                                        <path
-                                                            d="M12 2.02c-5.51 0-9.98 4.47-9.98 9.98s4.47 9.98 9.98 9.98 9.98-4.47 9.98-9.98S17.51 2.02 12 2.02zm0 17.96c-4.4 0-7.98-3.58-7.98-7.98S7.6 4.02 12 4.02 19.98 7.6 19.98 12 16.4 19.98 12 19.98zM12.75 5l-4.5 8.5h3.14V19l4.36-8.5h-3V5z">
-                                                        </path>
-                                                    </svg> <span class="side-menu__label">Landing Page</span> </a> </li>
-                                            <!-- End::slide -->
-                                            <!-- Start::slide -->
-
-                                            <!-- Start::slide__category -->
-                                            <li class="slide__category"><span class="category-name">Pages</span></li>
-                                            <!-- End::slide__category -->
-                                            <!-- Start::slide -->
-
-                                            <!-- Start::slide -->
+                                                    <span class="side-menu__label">Testimonials</span> 
+                                                </a> 
+                                            </li>
+                                            <li class="slide"> <a href="#"
+                                                    class="side-menu__item {{request()->segment(1) == 'company' || request()->segment(1) == 'companies' ? 'active' : ''}}">
+                                                    
+                                                    <svg fill="currentColor" class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 15H21M3 19H15M3 7H11M3 11H11M19.4 11H16.6C16.0399 11 15.7599 11 15.546 10.891C15.3578 10.7951 15.2049 10.6422 15.109 10.454C15 10.2401 15 9.96005 15 9.4V6.6C15 6.03995 15 5.75992 15.109 5.54601C15.2049 5.35785 15.3578 5.20487 15.546 5.10899C15.7599 5 16.0399 5 16.6 5H19.4C19.9601 5 20.2401 5 20.454 5.10899C20.6422 5.20487 20.7951 5.35785 20.891 5.54601C21 5.75992 21 6.03995 21 6.6V9.4C21 9.96005 21 10.2401 20.891 10.454C20.7951 10.6422 20.6422 10.7951 20.454 10.891C20.2401 11 19.9601 11 19.4 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                                                    <span class="side-menu__label">Contents</span> 
+                                                </a> 
+                                            </li>
 
                                         </ul>
                                         <div class="slide-right d-none" id="slide-right"><svg
