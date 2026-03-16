@@ -34,6 +34,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.featured-event.edit');
+        return view('livewire.event.featured.edit');
     }
 }

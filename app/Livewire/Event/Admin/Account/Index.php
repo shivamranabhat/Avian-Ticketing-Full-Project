@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Account;
+namespace App\Livewire\Event\Admin\Account;
 
 use App\Models\User;
 use Livewire\Component;
@@ -27,25 +27,25 @@ class Index extends Component
 
     public function delete($id)
     {
-        $account = User::find($id)->first()->where('platform', 'Pass')->first();
+        $account = User::find($id)->where('platform', 'Ticket')->first();
         if ($account) {
             $account->delete();
         }
+        dd($account);
         session()->flash('success', 'Account deleted successfully.');
     }
 
     public function render()
     {
-        $accounts = User::query()
+         $accounts = User::query()
             ->when($this->search, function ($query) {
                 $query->where('email', 'like', '%' . $this->search . '%')
                       ->orWhere('phone', 'like', '%' . $this->search . '%')
                       ->orWhere('slug', 'like', '%' . $this->search . '%');
             })
-            ->where('platform', 'Pass')
+            ->orWhere('platform', 'Ticket')
             ->latest()
             ->paginate($this->perPage);
-
-        return view('livewire.admin.account.index', compact('accounts'));
+        return view('livewire.event.admin.account.index',compact('accounts'));
     }
 }

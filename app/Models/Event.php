@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     protected $fillable = [
-        'name', 'date', 'location', 'organizer', 'about', 'venue', 'images','event_category_id','slug'
+        'name', 'date', 'location', 'organizer', 'about', 'venue','main_image','image_alt', 'images','event_category_id','slug'
     ];
 
     protected $casts = [
@@ -33,5 +33,15 @@ class Event extends Model
     public function featured()
     {
         return $this->hasOne(FeaturedEvent::class);
+    }
+
+    public function faqs()
+    {
+        return $this->hasMany(EventFaq::class);
+    }
+
+    public function tocs()
+    {
+        return $this->hasMany(EventToc::class);
     }
 }

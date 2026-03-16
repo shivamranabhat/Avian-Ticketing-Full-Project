@@ -20,7 +20,12 @@ class Create extends Component
     public $organizer;
     public $about;
     public $venue;
-    public $existingImages = [];
+
+    // New fields
+    public $main_image;      // Single main/featured image
+    public $image_alt;       // Alt text for main image
+
+    public $images = [];     // Additional gallery images
 
     public $artistCount = 0;
     public $artists = [];
@@ -28,65 +33,76 @@ class Create extends Component
     public $ticketCount = 0;
     public $tickets = [];
 
-    public $images = [];
+    public $faqCount = 0;
+    public $faqs = [];
 
-    public function removeImage($key)
-    {
-        if (isset($this->images[$key])) {
-            unset($this->images[$key]);
-            $this->images = array_values($this->images); // re-index array
-        }
-    }
-
-    protected $rules = [
-        'name'          => 'required|string|max:255',
-        'date'          => 'required|date',
-        'event_category_id'   => 'required',
-        'location'      => 'required|string|max:255',
-        'organizer'     => 'required|string|max:255',
-        'about'         => 'nullable|string',
-        'venue'         => 'nullable|string|max:255',
-        'images.*'      => 'nullable|image|max:5120',
-        'artistCount'   => 'integer|min:0',
-        'artists.*.name'  => 'required_if:artistCount,>,0|string|max:255',
-        'artists.*.image' => 'nullable|image|max:2048',
-        'ticketCount'   => 'integer|min:0',
-        'tickets.*.name'  => 'required_if:ticketCount,>,0|string|max:100',
-        'tickets.*.price' => 'required_if:ticketCount,>,0|numeric|min:0',
-    ];
+    public $tocCount = 0;
+    public $tocs = [];
 
     public function mount()
     {
         $this->artists = [];
         $this->tickets = [];
-        $this->existingImages = [];
+        $this->faqs    = [];
+        $this->tocs    = [];
     }
 
-    public function updatedArtistCount($value)
+    protected $rules = [
+        'name'              => 'required|string|max:255',
+        'date'              => 'required|date',
+        'event_category_id' => 'required|exists:event_categories,id',
+        'location'          => 'required|string|max:255',
+        'organizer'         => 'required|string|max:255',
+        'about'             => 'nullable|string',
+        'venue'             => 'nullable|string|max:255',
+
+        'main_image'        => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+        'image_alt'         => 'nullable|string|max:255',
+
+        'images.*'          => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+
+        'artistCount'       => 'integer|min:0',
+        'artists.*.name'    => 'required_if:artistCount,>,0|string|max:255',
+        'artists.*.image'   => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:3072',
+
+        'ticketCount'       => 'integer|min:0',
+        'tickets.*.name'    => 'required_if:ticketCount,>,0|string|max:100',
+        'tickets.*.price'   => 'required_if:ticketCount,>,0|numeric|min:0',
+
+        'faqCount'          => 'integer|min:0',
+        'faqs.*.title'      => 'required_if:faqCount,>,0|string|max:255',
+        'faqs.*.description'=> 'required_if:faqCount,>,0|string',
+
+        'tocCount'          => 'integer|min:0',
+        'tocs.*.title'      => 'required_if:tocCount,>,0|string|max:255',
+        'tocs.*.description'=> 'required_if:tocCount,>,0|string',
+    ];
+
+    // Dynamic count handlers
+    public function updatedArtistCount($value) { $this->syncDynamicItems('artists', $value, ['name' => '', 'image' => null]); }
+    public function updatedTicketCount($value) { $this->syncDynamicItems('tickets', $value, ['name' => '', 'price' => '']); }
+    public function updatedFaqCount($value)    { $this->syncDynamicItems('faqs', $value, ['title' => '', 'description' => '']); }
+    public function updatedTocCount($value)    { $this->syncDynamicItems('tocs', $value, ['title' => '', 'description' => '']); }
+
+    private function syncDynamicItems($property, $newCount, $defaultItem)
     {
-        $value = max(0, (int)$value);
-        $current = count($this->artists);
+        $value  = max(0, (int) $newCount);
+        $current = count($this->$property);
 
         if ($value > $current) {
             for ($i = $current; $i < $value; $i++) {
-                $this->artists[] = ['name' => '', 'image' => null, 'existing_image' => null];
+                $this->$property[] = $defaultItem;
             }
         } elseif ($value < $current) {
-            $this->artists = array_slice($this->artists, 0, $value);
+            $this->$property = array_slice($this->$property, 0, $value);
         }
     }
 
-    public function updatedTicketCount($value)
+    public function removeImage($key)
     {
-        $value = max(0, (int)$value);
-        $current = count($this->tickets);
-
-        if ($value > $current) {
-            for ($i = $current; $i < $value; $i++) {
-                $this->tickets[] = ['name' => '', 'price' => ''];
-            }
-        } elseif ($value < $current) {
-            $this->tickets = array_slice($this->tickets, 0, $value);
+        if (isset($this->images[$key])) {
+            unset($this->images[$key]);
+            $this->images = array_values($this->images);
         }
     }
 
@@ -94,35 +110,41 @@ class Create extends Component
     {
         $this->validate();
 
-        $newImagePaths = [];
+        // Store main image
+        $mainImagePath = $this->main_image->store('events/main', 'public');
+
+        // Store additional gallery images
+        $imagePaths = [];
         foreach ($this->images as $image) {
-            $newImagePaths[] = $image->store('events/images', 'public');
+            $imagePaths[] = $image->store('events/images', 'public');
         }
-        $allImages = $newImagePaths;
+
+        // Create Event
         $event = Event::create([
-            'name'      => $this->name,
-            'event_category_id'=> $this->event_category_id,
-            'date'      => $this->date,
-            'location'  => $this->location,
-            'organizer' => $this->organizer,
-            'about'     => $this->about,
-            'venue'     => $this->venue,
-            'images'    => $allImages ?: null,
-            'slug'      => Str::slug($this->name.now())
+            'name'              => $this->name,
+            'slug'              => Str::slug($this->name . '-' . now()->format('YmdHis')),
+            'event_category_id' => $this->event_category_id,
+            'date'              => $this->date,
+            'location'          => $this->location,
+            'organizer'         => $this->organizer,
+            'about'             => $this->about,
+            'venue'             => $this->venue,
+            'main_image'        => $mainImagePath,
+            'image_alt'         => $this->image_alt ?? $this->name,
+            'images'            => $imagePaths ?: null,
         ]);
 
+        // Artists
         foreach ($this->artists as $artist) {
             if (empty($artist['name'])) continue;
-            $imagePath = null;
-            if ($artist['image']) {
-                $imagePath = $artist['image']->store('events/artists', 'public');
-            }
+            $artistImage = $artist['image'] ? $artist['image']->store('events/artists', 'public') : null;
             $event->artists()->create([
                 'name'  => $artist['name'],
-                'image' => $imagePath,
+                'image' => $artistImage,
             ]);
         }
 
+        // Tickets
         foreach ($this->tickets as $ticket) {
             if (empty($ticket['name'])) continue;
             $event->tickets()->create([
@@ -131,13 +153,33 @@ class Create extends Component
             ]);
         }
 
+        // FAQs
+        foreach ($this->faqs as $faq) {
+            if (empty($faq['title'])) continue;
+            $event->faqs()->create([
+                'title'       => $faq['title'],
+                'description' => $faq['description'],
+                'slug'        => Str::slug($faq['title'] . '-' . time()),
+            ]);
+        }
+
+        // TOCs
+        foreach ($this->tocs as $toc) {
+            if (empty($toc['title'])) continue;
+            $event->tocs()->create([
+                'title'       => $toc['title'],
+                'description' => $toc['description'],
+                'slug'        => Str::slug($toc['title'] . '-' . time()),
+            ]);
+        }
+
         session()->flash('success', 'Event created successfully.');
-        return redirect()->route('event.featured.index');
+        return redirect()->route('event.index');
     }
 
     public function render()
     {
-        $categories = EventCategory::select('id','name')->latest()->get();
-        return view('livewire.event.create',compact('categories'));
+        $categories = EventCategory::select('id', 'name')->latest()->get();
+        return view('livewire.event.create', compact('categories'));
     }
 }

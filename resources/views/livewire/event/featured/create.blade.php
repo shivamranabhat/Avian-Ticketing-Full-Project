@@ -11,9 +11,14 @@
             </a>
         </div>
         <form class="card-body" wire:submit='save'>
-            <div class="col-12"> <label for="input-text" class="form-label">Name</label> <input type="text"
-                    class="form-control" wire:model="name" placeholder="Category Name">
-                @error('name')
+            <div class="col-12"> <label for="input-text" class="form-label">Event</label> 
+                <select class="form-select" aria-label="Select menu" wire:model='event_id'>
+                    <option selected>Select an event</option>
+                    @foreach ($events as $event)
+                    <option value="{{$event->id}}">{{$event->name}}</option>
+                    @endforeach
+                </select>
+                @error('event_id')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>

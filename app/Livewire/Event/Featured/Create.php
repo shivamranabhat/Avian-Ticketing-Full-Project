@@ -26,7 +26,7 @@ class Create extends Component
         ]);
 
         session()->flash('success', 'Event created successfully.');
-        return redirect()->route('event.index');
+        return redirect()->route('event.featured.index');
     }
 
     public function render()
@@ -36,6 +36,6 @@ class Create extends Component
             ->orderBy('name')
             ->get(['id', 'name']);
 
-        return view('livewire.featured-event.create', compact('events'));
+        return view('livewire.event.featured.create', compact('events'));
     }
 }
