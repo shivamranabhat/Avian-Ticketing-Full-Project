@@ -1,5 +1,5 @@
 <div
-    class="bottom-container mt-10 pb-10 bg-[url(./main/images/bottom-container.png)] bg-no-repeat object-cover w-full h-full hidden md:flex items-center justify-center">
+    class="bottom-container mt-10 pb-10 bg-[url(../main/images/bottom-container.png)] bg-no-repeat object-cover w-full h-full hidden md:flex items-center justify-center">
     <div class="owl-carousel banner-slider owl-theme" id="banner-slider">
         <div class="flex justify-center items-center">
             <div class="left flex flex-col gap-4 p-10 xl:p-16">

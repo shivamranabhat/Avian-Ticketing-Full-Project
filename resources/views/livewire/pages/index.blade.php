@@ -89,11 +89,12 @@
                 <p>No event categories found.</p>
                 @endforelse
             </div>
+            @if($events)
             <div class="relative">
                 <div class="owl-carousel event-slider z-10">
-                    @forelse($events as $event)
+                    @foreach($events as $event)
                     <div class="item border border-gray-300 rounded-lg overflow-hidden">
-                        <a class="flex flex-col gap-y-4" href="details.html">
+                        <a class="flex flex-col gap-y-4" href="{{route('ticket.details',$event->event->slug)}}">
                             <img src="{{asset('storage/'.$event->event->main_image)}}"
                                 class="w-full h-full rounded-t-lg object-cover" alt="{{$event->event->image_alt}}">
                             <div class="flex flex-col px-3 pb-3">
@@ -106,13 +107,12 @@
                                 <p class="text-primary text-xs">
                                     {{ $event->event->venue }}
                                 </p>
-                                <h6 class="mt-2 text-xs">NRs.{{ number_format($event->event->tickets->min('price') ?? 0, 0) }} onwards</h6>
+                                <h6 class="mt-2 text-xs">NRs.{{ number_format($event->event->tickets->min('price') ?? 0,
+                                    0) }} onwards</h6>
                             </div>
                         </a>
                     </div>
-                    @empty
-                    <p>No events found.</p>
-                    @endforelse
+                    @endforeach
                 </div>
 
 
@@ -125,6 +125,11 @@
                     </svg>
                 </button>
             </div>
+            @else
+            <div class="p-10 rounded-lg border border-gray-300 flex items-center justify-center">
+                <h5 class="text-xl font-semibold">No events found.</h5>
+            </div>
+            @endif
         </div>
         <div class="h-px bg-gray-300"></div>
         <!-- event section -->

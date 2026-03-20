@@ -1,10 +1,10 @@
 <div>
     <nav class="navbar flex gap-x-0 lg:gap-x-20 justify-between lg:justify-start py-3">
-        <a href="index.html">
+        <a href="/">
             <img src="{{asset('main/images/logo.png')}}" class="logo w-30 object-cover" alt="logo">
         </a>
         <ul class="hidden lg:flex gap-10 items-center text-primary font-medium">
-            <li><a href="foryou.html" class="active">For you</a></li>
+            <li><a href="{{route('ticket.foryou')}}" class="hover:text-purple transition-all duration-300 hover:ease-in-out {{request()->segment(1) == 'foryou' ? 'active' : ''}}">For you</a></li>
             <li><a href="#" class="hover:text-purple transition-all duration-300 hover:ease-in-out">Events</a></li>
             <li><a href="#" class="hover:text-purple transition-all duration-300 hover:ease-in-out">Activities</a>
             </li>
@@ -32,7 +32,7 @@
             class="relative flex flex-col h-full w-full bg-white shadow-2xl transform -translate-x-full transition-transform duration-400 ease-out">
             <!-- Header -->
             <div class="flex items-center justify-between px-6 py-5 border-b">
-                <a href="index.html">
+                <a href="/">
                     <img src="{{asset('main/images/logo.png')}}" class="w-32 object-contain" alt="Company Logo" />
                 </a>
                 <button id="close-menu" class="text-gray-800 focus:outline-none" aria-label="Close menu">
@@ -45,7 +45,7 @@
             <!-- Menu Links – centered vertically for better full-screen feel -->
             <div class="mt-20 flex items-center justify-center">
                 <ul class="flex flex-col items-center gap-10 md:gap-12 text-2xl md:text-3xl font-medium text-gray-800">
-                    <li><a href="foryou.html" class="hover:text-purple-600 transition-colors">For you</a></li>
+                    <li><a href="{{route('ticket.foryou')}}" class="hover:text-purple-600 transition-colors">For you</a></li>
                     <li><a href="#" class="hover:text-purple-600 transition-colors">Events</a></li>
                     <li><a href="#" class="hover:text-purple-600 transition-colors">Activities</a></li>
                     <li><a href="#" class="hover:text-purple-600 transition-colors">Vehicle Rental</a></li>

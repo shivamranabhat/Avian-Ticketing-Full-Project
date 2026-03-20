@@ -158,6 +158,11 @@
                                 <input type="number" step="0.01" class="form-control" wire:model="tickets.{{ $index }}.price">
                                 @error("tickets.$index.price") <span class="text-danger fs-12">{{ $message }}</span> @enderror
                             </div>
+                            <div class="col-md-6">
+                                <label>Total Seats</label>
+                                <input type="number" step="0.01" class="form-control" wire:model="tickets.{{ $index }}.total_seat">
+                                @error("tickets.$index.total_seat") <span class="text-danger fs-12">{{ $message }}</span> @enderror
+                            </div>
                         </div>
                     </div>
                     @endforeach

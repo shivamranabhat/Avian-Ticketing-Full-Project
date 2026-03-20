@@ -68,6 +68,7 @@ class Create extends Component
         'ticketCount'       => 'integer|min:0',
         'tickets.*.name'    => 'required_if:ticketCount,>,0|string|max:100',
         'tickets.*.price'   => 'required_if:ticketCount,>,0|numeric|min:0',
+        'tickets.*.total_seat'   => 'required_if:ticketCount,>,0|numeric|min:0',
 
         'faqCount'          => 'integer|min:0',
         'faqs.*.title'      => 'required_if:faqCount,>,0|string|max:255',
@@ -80,7 +81,7 @@ class Create extends Component
 
     // Dynamic count handlers
     public function updatedArtistCount($value) { $this->syncDynamicItems('artists', $value, ['name' => '', 'image' => null]); }
-    public function updatedTicketCount($value) { $this->syncDynamicItems('tickets', $value, ['name' => '', 'price' => '']); }
+    public function updatedTicketCount($value) { $this->syncDynamicItems('tickets', $value, ['name' => '','total_seat' => '', 'price' => '']); }
     public function updatedFaqCount($value)    { $this->syncDynamicItems('faqs', $value, ['title' => '', 'description' => '']); }
     public function updatedTocCount($value)    { $this->syncDynamicItems('tocs', $value, ['title' => '', 'description' => '']); }
 
@@ -149,6 +150,7 @@ class Create extends Component
             if (empty($ticket['name'])) continue;
             $event->tickets()->create([
                 'name'  => $ticket['name'],
+                'total_seat'  => $ticket['total_seat'],
                 'price' => $ticket['price'],
             ]);
         }

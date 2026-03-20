@@ -35,7 +35,7 @@ use App\Livewire\Admin\Testimonial\Index as TestimonialIndex;
 
 use App\Livewire\Admin\Auth\Signin as AdminSignin;
 
-use App\Livewire\Pages\Index;
+use App\Http\Controllers\PageController;
 use App\Http\Middleware\Authenticate;
 
 Route::get('/dashboard/signin', AdminSignin::class)->name('admin.signin');
@@ -85,6 +85,11 @@ Route::prefix('/dashboard')->middleware(Authenticate::class)->group(function () 
     
     
 });
-
- Route::get('/', Index::class)->name('index');   
+Route::controller(PageController::class)->group(function(){
+    Route::get('/','index')->name('ticket.index');   
+    Route::get('/foryou','foryou')->name('ticket.foryou');   
+    Route::get('/confirmation/{slug}','confirmation')->name('ticket.confirmation');   
+    Route::get('/ticket/{reference}','ticket')->name('event.ticket');   
+    Route::get('/{slug}', 'details')->name('ticket.details');
+});  
    
