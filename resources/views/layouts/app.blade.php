@@ -424,28 +424,28 @@
                                             <!-- Start::slide__category -->
                                             <li class="slide__category"><span class="category-name">Main</span></li>
 
-                                            <li class="slide"> <a href="index.html" class="side-menu__item"> <svg
-                                                        xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
-                                                        viewBox="0 0 24 24">
-                                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                                        <path d="M5 5h4v6H5zm10 8h4v6h-4zM5 17h4v2H5zM15 5h4v2h-4z"
-                                                            opacity=".3"></path>
-                                                        <path
-                                                            d="M3 13h8V3H3v10zm2-8h4v6H5V5zm8 16h8V11h-8v10zm2-8h4v6h-4v-6zM13 3v6h8V3h-8zm6 4h-4V5h4v2zM3 21h8v-6H3v6zm2-4h4v2H5v-2z">
-                                                        </path>
-                                                    </svg> <span class="side-menu__label">Index</span> <span
-                                                        class="badge bg-success ms-auto menu-badge">1</span> </a> </li>
-                                            {{-- @if(auth()->user()->type == 'Super Admin')
-                                            <li class="slide"> <a href="{{route('company.index')}}"
-                                                    class="side-menu__item {{request()->segment(1) == 'company' || request()->segment(1) == 'companies' ? 'active' : ''}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="bi bi-building side-menu__icon" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z" />
-                                                        <path
-                                                            d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z" />
-                                                    </svg> <span class="side-menu__label">Company</span> </a> </li>
-                                            @endif --}}
+                                            <li class="slide"> <a href="{{route('slider.index')}}"
+                                                    class="side-menu__item {{request()->segment(2) == 'sliders' || request()->segment(2) == 'slider' ? 'active' : ''}}">
+                                                    <svg fill="currentColor"  class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                        xml:space="preserve">
+                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                            stroke-linejoin="round"></g>
+                                                        <g id="SVGRepo_iconCarrier">
+                                                            <path
+                                                                d="M43.7,58.3c3.7-2.1,7.2-3.1,11.1-3.1c1.1,0,2.2,0.1,3.2,0.2c0.5,0.1,0.6-0.1,0.1-0.4c-1.9-1.1-4-2.1-6.2-3 c-4.3-1.8-4.9-3.4-4.9-5.2c0-1.8,1.2-3.4,2.6-4.7c2.5-2.3,3.9-5.4,3.9-9.1c0-6.9-4.3-12.8-11.9-12.8S29.6,26.1,29.6,33 c0,3.7,1.4,6.9,3.9,9.1c1.4,1.3,2.6,3,2.6,4.7c0,1.7-0.7,3.4-4.9,5.2C25,54.6,19.1,57.6,19,63.3c0,3.7,2.8,7,6.3,7h14.2 c1.1,0,2-0.9,2-2v-6.5C41.7,60.4,42.4,59,43.7,58.3z">
+                                                            </path>
+                                                            <path
+                                                                d="M76.3,64.3c-9.4,2.9-16.8-6-27.2-1.8c-0.8,0.3-1.2,1-1.2,1.9v10.7c0,1.4,1.2,2.3,2.5,1.9 c10.2-3.1,17.6,5.8,27.3,1.8c0.7-0.3,1.3-1,1.3-1.9V66.2C79,64.9,77.6,63.9,76.3,64.3z M63.7,74.3c-2.2,0-4-1.8-4-4s1.8-4,4-4 c2.2,0,4,1.8,4,4S65.9,74.3,63.7,74.3z">
+                                                            </path>
+                                                        </g>
+                                                    </svg>
+
+                                                    <span class="side-menu__label">Slider</span> </a>
+
+
+                                            </li>
                                             <!-- End::slide -->
 
                                             <!-- Start::slide__project -->
@@ -493,30 +493,26 @@
                                                 </ul>
 
                                             </li>
-                                            <li class="slide"> <a href="{{route('ticket.account.index')}}"
-                                                    class="side-menu__item {{request()->segment(2) == 'ticket' && request()->segment(3) == 'accounts' || request()->segment(2) == 'ticket' && request()->segment(3) == 'account' ? 'active' : ''}}">
-                                                    <svg viewBox="0 0 1024 1024" class="side-menu__icon"
-                                                        fill="currentColor" version="1.1"
-                                                        xmlns="http://www.w3.org/2000/svg">
+                                            <li class="slide"> <a href="{{route('partner.index')}}"
+                                                    class="side-menu__item {{request()->segment(2) == 'partners' || request()->segment(2) == 'partner' ? 'active' : ''}}">
+                                                    <svg fill="currentColor"  class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
+                                                        xml:space="preserve">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>
                                                         <g id="SVGRepo_iconCarrier">
                                                             <path
-                                                                d="M962.4 1012.8s0 0.8 0 0h25.6-25.6zM704 338.4C704 195.2 588.8 78.4 445.6 78.4S187.2 195.2 187.2 338.4s116 260 258.4 260S704 481.6 704 338.4z m-472 0c0-118.4 96-214.4 213.6-214.4s213.6 96 213.6 214.4-96 214.4-213.6 214.4S232 456.8 232 338.4z"
-                                                                fill=""></path>
+                                                                d="M43.7,58.3c3.7-2.1,7.2-3.1,11.1-3.1c1.1,0,2.2,0.1,3.2,0.2c0.5,0.1,0.6-0.1,0.1-0.4c-1.9-1.1-4-2.1-6.2-3 c-4.3-1.8-4.9-3.4-4.9-5.2c0-1.8,1.2-3.4,2.6-4.7c2.5-2.3,3.9-5.4,3.9-9.1c0-6.9-4.3-12.8-11.9-12.8S29.6,26.1,29.6,33 c0,3.7,1.4,6.9,3.9,9.1c1.4,1.3,2.6,3,2.6,4.7c0,1.7-0.7,3.4-4.9,5.2C25,54.6,19.1,57.6,19,63.3c0,3.7,2.8,7,6.3,7h14.2 c1.1,0,2-0.9,2-2v-6.5C41.7,60.4,42.4,59,43.7,58.3z">
+                                                            </path>
                                                             <path
-                                                                d="M456.8 621.6c196.8 0 361.6 136 394.4 324h45.6C863.2 732 677.6 576.8 456 576.8c-221.6 0-406.4 155.2-440.8 368.8h45.6C96 756.8 260 621.6 456.8 621.6z"
-                                                                fill=""></path>
-                                                            <path
-                                                                d="M770.4 578.4l-24-8.8 20.8-14.4c65.6-46.4 104.8-122.4 103.2-202.4-1.6-128-102.4-232.8-228-241.6v47.2c100 8.8 180 92.8 180.8 194.4 0.8 52.8-19.2 102.4-56 140.8-36.8 37.6-86.4 59.2-139.2 60-24.8 0-50.4 0-75.2 1.6-15.2 1.6-41.6 0-54.4 9.6-1.6 0.8-3.2 0-4.8 0l-9.6 12c-0.8 1.6-2.4 3.2-4 4.8 0.8 1.6-0.8 16 0 17.6 12 4 71.2 0 156.8 2.4 179.2 1.6 326.4 160.8 340.8 338.4l47.2 3.2c-9.6-156-108-310.4-254.4-364.8z"
-                                                                fill=""></path>
+                                                                d="M76.3,64.3c-9.4,2.9-16.8-6-27.2-1.8c-0.8,0.3-1.2,1-1.2,1.9v10.7c0,1.4,1.2,2.3,2.5,1.9 c10.2-3.1,17.6,5.8,27.3,1.8c0.7-0.3,1.3-1,1.3-1.9V66.2C79,64.9,77.6,63.9,76.3,64.3z M63.7,74.3c-2.2,0-4-1.8-4-4s1.8-4,4-4 c2.2,0,4,1.8,4,4S65.9,74.3,63.7,74.3z">
+                                                            </path>
                                                         </g>
                                                     </svg>
 
+                                                    <span class="side-menu__label">Partner</span> </a>
 
-                                                    <span class="side-menu__label">Accounts</span> </a>
-                                               
 
                                             </li>
 

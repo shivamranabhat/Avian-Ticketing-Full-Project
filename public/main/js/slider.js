@@ -142,6 +142,17 @@ $(document).ready(function () {
             }
         }
     });
+    $(".hero-slider").owlCarousel({
+        items: 1,
+        margin:20,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        nav: false,
+        dots: false,
+        smartSpeed: 1000,        // slide transition speed (ms)
+        autoplaySpeed: 1000,     // autoplay transition speed
+    });
    
     const eventSlider = $(".event-slider");
     const activitySlider = $(".activity-slider");

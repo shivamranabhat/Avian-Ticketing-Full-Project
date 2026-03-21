@@ -12,84 +12,67 @@
         </div>
         <!-- banner section -->
         <!-- hero section -->
-        <div class="grid grid-cols-2 lg:grid-cols-9 gap-x-0 gap-y-6 lg:gap-y-0 lg:gap-x-6">
-            <div
-                class="col-span-2 md:col-span-6 xl:col-span-7 bg-[url(./main/images/banner.png)] relative h-[20rem] bg-cover bg-center rounded-lg">
+        <section class="owl-carousel hero-slider">
+            <div class="grid grid-cols-2 lg:grid-cols-9 gap-x-0 gap-y-6 lg:gap-y-0 lg:gap-x-6">
                 <div
-                    class="flex flex-col justify-center text-white gap-y-6 p-4 sm:p-8 h-full absolute w-full md:w-[70%] xl:w-1/2">
-                    <h1 class="italic font-bold text-3xl lg:text-4xl xl:text-5xl">BOOK THE
-                        <br>SAFE RIDE
-                    </h1>
-                    <h5 class="text-base xl:text-lg">Verified vehicles and trusted drivers, matched instantly for
-                        concerts,
-                        nightlife, tours, and airport
-                        rides. No calls. No bargaining.</h5>
-                    <p>Find My Ride</p>
+                    class="col-span-2 md:col-span-6 xl:col-span-7 bg-[url(./main/images/banner.png)] relative h-[20rem] bg-cover bg-center rounded-lg">
+                    <div
+                        class="flex flex-col justify-center text-white gap-y-6 p-4 sm:p-8 h-full absolute w-full md:w-[70%] xl:w-1/2">
+                        <h1 class="italic font-bold text-3xl lg:text-4xl xl:text-5xl">BOOK THE
+                            <br>SAFE RIDE
+                        </h1>
+                        <h5 class="text-base xl:text-lg">Verified vehicles and trusted drivers, matched instantly for
+                            concerts,
+                            nightlife, tours, and airport
+                            rides. No calls. No bargaining.</h5>
+                        <a href="#" class="cursor-pointer">Find My Ride</a>
+                    </div>
+                </div>
+                <div
+                    class="col-span-2 md:col-span-3 xl:col-span-2 h-full w-full rounded-2xl border border-gray-400 flex flex-col p-6 gap-y-4">
+                    <div class="price-box">
+                        <p class="text-xs">From</p>
+                        <h5 class="text-xl font-semibold">$5.50 <span class="text-primary text-sm">/hour</span></h5>
+                    </div>
+                    <div class="flex flex-col gap-y-3 mt-2">
+                        <div class="flex gap-x-2 items-center">
+                            <img src="{{asset('main/images/downloads.svg')}}" class="w-8 sm:w-5" alt="downloads icon">
+                            <p class="text-primary text-sm sm:text-xs">
+                                Unlimited stock downloads
+                            </p>
+                        </div>
+                        <div class="flex gap-x-2 items-center">
+                            <img src="{{asset('main/images/cert.svg')}}" class="w-8 sm:w-5" alt="cert icon">
+                            <p class="text-primary text-sm sm:text-xs">
+                                26+ million premium assets
+                            </p>
+                        </div>
+                        <div class="flex gap-x-2 items-center">
+                            <img src="{{asset('main/images/check.svg')}}" class="w-8 sm:w-5" alt="check icon">
+                            <p class="text-primary text-sm sm:text-xs">
+                                Lifetime commercial license
+                            </p>
+                        </div>
+                        <div class="flex gap-x-2 items-center">
+                            <img src="{{asset('main/images/logout.svg')}}" class="w-8 sm:w-5" alt="logout icon">
+                            <p class="text-primary text-sm sm:text-xs">
+                                Easy cancelation
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#"
+                        class="text-center mt-4 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-sm text-white rounded px-4 py-2">Show
+                        Offers!</a>
                 </div>
             </div>
-            <div
-                class="col-span-2 md:col-span-3 xl:col-span-2 h-full w-full rounded-2xl border border-gray-400 flex flex-col p-6 gap-y-4">
-                <div class="price-box">
-                    <p class="text-xs">From</p>
-                    <h5 class="text-xl font-semibold">$5.50 <span class="text-primary text-sm">/hour</span></h5>
-                </div>
-                <div class="flex flex-col gap-y-3 mt-2">
-                    <div class="flex gap-x-2 items-center">
-                        <img src="{{asset('main/images/downloads.svg')}}" class="w-6 sm:w-5" alt="downloads icon">
-                        <p class="text-primary text-sm sm:text-xs">
-                            Unlimited stock downloads
-                        </p>
-                    </div>
-                    <div class="flex gap-x-2 items-center">
-                        <img src="{{asset('main/images/cert.svg')}}" class="w-6 sm:w-5" alt="cert icon">
-                        <p class="text-primary text-sm sm:text-xs">
-                            26+ million premium assets
-                        </p>
-                    </div>
-                    <div class="flex gap-x-2 items-center">
-                        <img src="{{asset('main/images/check.svg')}}" class="w-6 sm:w-5" alt="check icon">
-                        <p class="text-primary text-sm sm:text-xs">
-                            Lifetime commercial license
-                        </p>
-                    </div>
-                    <div class="flex gap-x-2 items-center">
-                        <img src="{{asset('main/images/logout.svg')}}" class="w-6 sm:w-5" alt="logout icon">
-                        <p class="text-primary text-sm sm:text-xs">
-                            Easy cancelation
-                        </p>
-                    </div>
-                </div>
-                <a href="#"
-                    class="text-center mt-4 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-sm text-white rounded px-4 py-2">Show
-                    Offers!</a>
-            </div>
-        </div>
+        </section>
         <!-- hero section -->
 
         <!-- event section -->
         <div class="flex flex-col gap-y-4 mt-3 md:mt-6 lg:mt-10">
             <h2 class="text-2xl md:text-3xl font-semibold mt-3">All events</h2>
-            <div class="flex gap-x-4 overflow-x-auto pb-4">
-                <button
-                    class="px-4 py-2 border border-gray-400 cursor-pointer text-sm rounded-lg hover:bg-active transition-all duration-300 hover:ease-in-out flex gap-x-2 items-center">
-                    <img src="{{asset('main/images/filter.svg')}}" alt="filter">
-                    Filters
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                    </svg>
-
-                </button>
-                @forelse($eventCategories as $category)
-                <button
-                    class="px-4 py-2 border border-gray-400 cursor-pointer text-sm rounded-lg hover:bg-active transition-all duration-300 hover:ease-in-out">
-                    {{ Str::replaceLast(' ', '&nbsp;', $category->name) }}
-                </button>
-                @empty
-                <p>No event categories found.</p>
-                @endforelse
-            </div>
-            @if($events)
+            
+            @if($events->count()>0)
             <div class="relative">
                 <div class="owl-carousel event-slider z-10">
                     @foreach($events as $event)

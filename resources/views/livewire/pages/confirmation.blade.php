@@ -141,18 +141,30 @@
                             </div>
 
                             <!-- Submit Button with Spinner -->
-                            <button type="submit" wire:loading.attr="disabled"
+                            <button type="submit" wire:loading.attr="disabled" wire:target="submit"
                                 class="text-white rounded-lg cursor-pointer text-center p-3 font-semibold uppercase transition-all hover:brightness-110 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] w-full mt-4 flex items-center justify-center gap-x-3 disabled:opacity-80">
 
-                                <!-- Spinner -->
-                                <span wire:loading
-                                    class="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span>
+                                <!-- SVG Spinner -->
+                                <svg wire:loading wire:target="submit" class="animate-spin h-5 w-5 text-white"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 
-                                <!-- Button Text -->
-                                <span wire:loading.remove>Proceed to Pay</span>
-                                <span wire:loading>Processing...</span>
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z">
+                                    </path>
+                                </svg>
+
+                                <!-- Normal Text -->
+                                <span wire:loading.remove wire:target="submit">
+                                    Proceed to Pay
+                                </span>
+
+                                <!-- Loading Text -->
+                                <span wire:loading wire:target="submit">
+                                    Processing...
+                                </span>
                             </button>
-
                         </form>
                     </div>
 

@@ -84,3 +84,12 @@ li a.active{
     /* Optional: helps when content is very long */
     transition-timing-function: ease-out;
 }
+.owl-carousel.hero-slider .owl-item img {
+    width: 1.6rem !important;
+}
+
+@media (min-width: 640px) {
+    .owl-carousel.hero-slider .owl-item img {
+        width: 1.6rem !important; /* sm:w-5 */
+    }
+}

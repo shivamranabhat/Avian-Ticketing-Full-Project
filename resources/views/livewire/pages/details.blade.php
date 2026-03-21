@@ -298,7 +298,7 @@
                         @endif
                     </div>
 
-                   @if(count($this->selectedTickets) > 0)
+                    @if(count($this->selectedTickets) > 0)
                     <div class="flex flex-col gap-y-3">
                         @foreach($this->selectedTickets as $item)
                         <div class="flex items-center justify-between text-sm">
@@ -325,10 +325,31 @@
                 </div>
 
                 <!-- Buy Button -->
-                <button wire:click="proceedToCheckout" @if($this->grandTotal==0) disabled @endif
-                    class="text-white rounded-lg cursor-pointer text-center p-4 font-semibold uppercase transition-all 
-                   {{ $this->grandTotal == 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] hover:brightness-110' }}">
-                    Buy Ticket{{ $this->totalTickets !== 1 ? 's' : '' }}
+                <button wire:click="proceedToCheckout" wire:loading.attr="disabled" wire:target="proceedToCheckout"
+                    @if($this->grandTotal == 0) disabled @endif
+
+                    class="text-white rounded-lg cursor-pointer text-center p-4 font-semibold uppercase transition-all
+                    flex items-center justify-center gap-2
+                    {{ $this->grandTotal == 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-b from-[#C22C9F]
+                    to-[#AA02FF] hover:brightness-110' }}">
+
+                    <!-- Spinner -->
+                    <svg wire:loading wire:target="proceedToCheckout" class="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z">
+                        </path>
+                    </svg>
+
+                    <!-- Text -->
+                    <span wire:loading.remove wire:target="proceedToCheckout">
+                        Buy Ticket{{ $this->totalTickets !== 1 ? 's' : '' }}
+                    </span>
+
+                    <span wire:loading wire:target="proceedToCheckout">
+                        Processing...
+                    </span>
                 </button>
 
             </div>

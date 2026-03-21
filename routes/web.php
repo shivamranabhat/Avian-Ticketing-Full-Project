@@ -21,6 +21,15 @@ use App\Livewire\Admin\Faq\Create as FaqCreate;
 use App\Livewire\Admin\Faq\Edit as FaqEdit;
 use App\Livewire\Admin\Faq\Index as FaqIndex;
 
+
+use App\Livewire\Event\Partner\Create as PartnerCreate;
+use App\Livewire\Event\Partner\Edit as PartnerEdit;
+use App\Livewire\Event\Partner\Index as PartnerIndex;
+
+use App\Livewire\Event\Slider\Create as SliderCreate;
+use App\Livewire\Event\Slider\Edit as SliderEdit;
+use App\Livewire\Event\Slider\Index as SliderIndex;
+
 use App\Livewire\Admin\Account\Details\Create as DetailsCreate;
 use App\Livewire\Admin\Account\Details\Edit as DetailsEdit;
 use App\Livewire\Admin\Account\Details\Index as DetailsIndex;
@@ -40,7 +49,7 @@ use App\Http\Middleware\Authenticate;
 
 Route::get('/dashboard/signin', AdminSignin::class)->name('admin.signin');
 Route::prefix('/dashboard')->middleware(Authenticate::class)->group(function () {
-     Route::name('event.category.')->group(function () {
+    Route::name('event.category.')->group(function () {
         Route::get('/event/categories', EventCategoryIndex::class)->name('index');            
         Route::get('/event/category/new', EventCategoryCreate::class)->name('create');   
         Route::get('/event/category/{slug}', EventCategoryEdit::class)->name('edit');    
@@ -77,6 +86,19 @@ Route::prefix('/dashboard')->middleware(Authenticate::class)->group(function () 
         Route::get('/faq/new', FaqCreate::class)->name('create');   
         Route::get('/faq/{slug}', FaqEdit::class)->name('edit');    
     });
+
+    Route::name('partner.')->group(function () {
+        Route::get('/partners', PartnerIndex::class)->name('index');            
+        Route::get('/partner/new', PartnerCreate::class)->name('create');   
+        Route::get('/partner/{slug}', PartnerEdit::class)->name('edit');    
+    });
+
+    Route::name('slider.')->group(function () {
+        Route::get('/sliders', SliderIndex::class)->name('index');            
+        Route::get('/slider/new', SliderCreate::class)->name('create');   
+        Route::get('/slider/{slug}', sliderEdit::class)->name('edit');    
+    });
+
     Route::name('testimonial.')->group(function () {
         Route::get('/testimonials', TestimonialIndex::class)->name('index');            
         Route::get('/testimonial/new', TestimonialCreate::class)->name('create');   
