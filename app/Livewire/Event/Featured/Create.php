@@ -5,15 +5,14 @@ namespace App\Livewire\Event\Featured;
 use App\Models\Event;
 use App\Models\FeaturedEvent;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Create extends Component
 {
     public $event_id;
-    public $slug;
 
     protected $rules = [
         'event_id' => 'required|exists:events,id|unique:featured_events,event_id',
-        'slug'     => 'nullable|string|max:255|unique:featured_events,slug',
     ];
 
     public function save()
@@ -22,10 +21,10 @@ class Create extends Component
 
         FeaturedEvent::create([
             'event_id' => $this->event_id,
-            'slug'     => $this->slug ?? \Str::slug(Event::find($this->event_id)->name . '-' . now()->format('YmdHis')),
+            'slug'     => Str::slug(Event::find($this->event_id)->name . '-' . now()->format('YmdHis')),
         ]);
 
-        session()->flash('success', 'Event created successfully.');
+        session()->flash('success', 'Event set to featured successfully');
         return redirect()->route('event.featured.index');
     }
 

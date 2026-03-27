@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Livewire\Event\Category;
+namespace App\Livewire\Event\Activity\Category;
 
 use Livewire\Component;
-use App\Models\EventCategory;
+use App\Models\ActivityCategory;
 use Illuminate\Support\Str;
 
 class Create extends Component
@@ -18,17 +18,17 @@ class Create extends Component
     {
         $this->validate();
 
-        EventCategory::create([
+        ActivityCategory::create([
             'name' => $this->name,
             'slug' => Str::slug('cat'.'-'.$this->name.'-'.now()),
         ]);
 
         session()->flash('success', 'Category created successfully!');
-        return redirect()->route('event.category.index');
+        return redirect()->route('activity.category.index');
     }
 
     public function render()
     {
-        return view('livewire.event.category.create');
+        return view('livewire.event.activity.category.create');
     }
 }

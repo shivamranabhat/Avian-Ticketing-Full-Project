@@ -3,10 +3,11 @@
         <livewire:pages.navbar />
     </div>
 
-    <div class="ticket flex flex-col gap-y-6 items-center w-full md:w-[70%] lg:w-1/2 mx-auto px-4 mb-10">
+    <div id="ticket-area"
+        class="ticket flex flex-col gap-y-6 items-center w-full md:w-[70%] lg:w-1/2 mx-auto px-4 mb-10">
 
         <!-- Download Button -->
-        <button wire:click="downloadPdf"
+        <button id="download"
             class="text-white rounded-lg text-center p-3 font-semibold uppercase cursor-pointer transition-all hover:brightness-110 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] w-full">
             Download PDF
         </button>
@@ -66,14 +67,8 @@
             <div class="w-full flex flex-col items-center mt-4">
                 <p class="text-xs text-gray-500 mb-2 tracking-widest">SCAN AT ENTRY</p>
 
-                @php
-                $barcodeObj = new \TCPDFBarcode($booking->barcode ?? $booking->booking_reference, 'C128');
-                echo $barcodeObj->getBarcodeHTML(2.2, 65, 'black');
-                @endphp
+                {!! QrCode::size(120)->generate($booking->booking_reference) !!}
 
-                <p class="mt-3 font-mono text-sm font-bold text-gray-700">
-                    {{ $booking->barcode ?? $booking->booking_reference }}
-                </p>
             </div>
 
             <p class="text-[#6402A1] w-[90%] sm:w-[80%] md:w-[70%] text-center opacity-60 mt-4">
@@ -83,8 +78,62 @@
         @endforeach
 
     </div>
+    <div class="no-print">
+        <livewire:pages.featured-section />
+        <livewire:pages.partner-section />
+        <livewire:pages.footer />
+    </div>
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
 
-    <livewire:pages.featured-section />
-    <livewire:pages.partner-section />
-    <livewire:pages.footer />
+            html,
+            body {
+                background: #ffffff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            body * {
+                visibility: hidden;
+            }
+
+            #ticket-area,
+            #ticket-area * {
+                visibility: visible;
+            }
+
+            #ticket-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 10px !important;
+            }
+
+            .ticket-details {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                margin-bottom: 20px !important;
+                border: 1px solid #d1d5db !important;
+                background: #ffffff !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <script>
+        const download = document.getElementById("download");
+
+        download.addEventListener("click", function () {
+            window.print();
+        });
+    </script>
 </section>

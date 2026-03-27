@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\Event\Featured;
+namespace App\Livewire\Event\Activity\Featured;
 
-use App\Models\FeaturedEvent;
 use Livewire\Component;
-use App\Models\Event;
+use App\Models\Activity;
+use App\Models\FeaturedActivity;
 
 class Edit extends Component
 {
@@ -17,7 +17,7 @@ class Edit extends Component
 
     public function mount($slug)
     {
-        $this->featured = FeaturedEvent::whereSlug($slug)->first();
+        $this->featured = FeaturedActivity::whereSlug($slug)->first();
         $this->slug     = $this->featured->slug;
     }
 
@@ -29,16 +29,16 @@ class Edit extends Component
             'slug' => $this->slug
         ]);
 
-        session()->flash('success', 'Event set to featured successfully');
-        return redirect()->route('event.featured.index');
+        session()->flash('success', 'Activity set to featured successfully.');
+        return redirect()->route('activity.featured.index');
     }
+
 
     public function render()
     {
-        // Only show events that are NOT already featured
-        $events = Event::whereDoesntHave('featured')
+         $activities = Activity::whereDoesntHave('featured')
             ->orderBy('name')
             ->get(['id', 'name']);
-        return view('livewire.event.featured.edit',compact('events'));
+        return view('livewire.event.activity.featured.edit',compact('activities'));
     }
 }

@@ -1,8 +1,9 @@
 <div class="col-xl-12">
     <div class="card custom-card">
         <div class="card-header justify-content-between">
-            <div class="card-title">Featured</div>
+            <div class="card-title">Category</div>
         </div>
+
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col-sm-12 col-md-6">
@@ -26,7 +27,7 @@
                             <input type="search" class="form-control form-control-sm" placeholder="Search..."
                                 wire:model.live="search">
                         </label>
-                        <a href="{{ route('event.featured.create') }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('activity.category.create') }}" class="btn btn-sm btn-primary">
                             <i class="bi bi-plus-circle"></i> New
                         </a>
                     </div>
@@ -44,14 +45,14 @@
                         </tr>
                     </thead>
                     <tbody wire:poll.keep-alive>
-                        @forelse($featured as $index=>$feature)
+                        @forelse($categories as $index=>$category)
                         <tr>
-                            <td>{{ $featured->firstItem()+$index }}</td>
-                            <td>{{ $feature->event->name }}</td>
-                            <td>{{ $feature->created_at }}</td>
+                            <td>{{ $categories->firstItem()+$index }}</td>
+                            <td>{{ $category->name }}</td>
+                            <td>{{ $category->created_at }}</td>
                             <td x-data="{ openModal: false }">
                                 <div class="hstack gap-2">
-                                    <a href="{{ route('event.featured.edit', $feature->slug) }}"
+                                    <a href="{{ route('activity.category.edit', $category->slug) }}"
                                         class="btn btn-icon btn-info-transparent rounded-pill">
                                         <i class="ri-edit-line"></i>
                                     </a>
@@ -72,7 +73,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-cancel" @click="openModal = false">Cancel</button>
-                                            <button class="btn btn-delete" wire:click="delete('{{ $feature->id }}')"
+                                            <button class="btn btn-delete" wire:click="delete('{{ $category->slug }}')"
                                                 @click="openModal = false">Delete</button>
                                         </div>
                                     </div>
@@ -81,7 +82,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="text-center text-muted">No featured event found.</td>
+                            <td colspan="4" class="text-center text-muted">No categories found.</td>
                         </tr>
                         @endforelse
                     </tbody>
@@ -91,13 +92,13 @@
             <div class="row mt-4">
                 <div class="col-sm-12 col-md-5">
                     <div class="dataTables_info">
-                        Showing {{ $featured->firstItem() }} to {{ $featured->lastItem() }}
-                        of {{ $featured->total() }} entries
+                        Showing {{ $categories->firstItem() }} to {{ $categories->lastItem() }}
+                        of {{ $categories->total() }} entries
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-7">
                     <div class="dataTables_paginate paging_simple_numbers d-flex justify-content-end">
-                        {{ $featured->links() }}
+                        {{ $categories->links() }}
                     </div>
                 </div>
             </div>

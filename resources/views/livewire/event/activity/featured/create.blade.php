@@ -1,0 +1,40 @@
+<div class="col-xl-12">
+    <div class="card custom-card">
+        <div class="card-header justify-content-between">
+            <div class="card-title"> Create </div>
+            <a href="{{route('activity.featured.index')}}" class="btn btn-primary btn-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                </svg>
+            </a>
+        </div>
+        <form class="card-body" wire:submit='save'>
+            <div class="col-12"> <label for="input-text" class="form-label">Activity</label> 
+                <select class="form-select" aria-label="Select menu" wire:model='activity_id'>
+                    <option selected>Select an activity</option>
+                    @foreach ($activities as $activity)
+                    <option value="{{$activity->id}}">{{$activity->name}}</option>
+                    @endforeach
+                </select>
+                @error('activity_id')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="border-top px-4 py-3 d-flex justify-content-end gap-2">
+                <a href="{{ route('activity.featured.index') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary d-flex align-items-center gap-1"
+                    wire:loading.attr="disabled">
+                    <span wire:loading.remove wire:target="save">Save</span>
+                    <span wire:loading wire:target="save">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span aria-hidden="true">Saving…</span>
+                    </span>
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

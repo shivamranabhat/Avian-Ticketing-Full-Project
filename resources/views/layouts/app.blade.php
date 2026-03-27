@@ -426,22 +426,21 @@
 
                                             <li class="slide"> <a href="{{route('slider.index')}}"
                                                     class="side-menu__item {{request()->segment(2) == 'sliders' || request()->segment(2) == 'slider' ? 'active' : ''}}">
-                                                    <svg fill="currentColor"  class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                        xml:space="preserve">
+                                                    <svg viewBox="0 0 24 24" fill="none" fill="currentColor"
+                                                        class="side-menu__icon" xmlns="http://www.w3.org/2000/svg">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>
                                                         <g id="SVGRepo_iconCarrier">
-                                                            <path
-                                                                d="M43.7,58.3c3.7-2.1,7.2-3.1,11.1-3.1c1.1,0,2.2,0.1,3.2,0.2c0.5,0.1,0.6-0.1,0.1-0.4c-1.9-1.1-4-2.1-6.2-3 c-4.3-1.8-4.9-3.4-4.9-5.2c0-1.8,1.2-3.4,2.6-4.7c2.5-2.3,3.9-5.4,3.9-9.1c0-6.9-4.3-12.8-11.9-12.8S29.6,26.1,29.6,33 c0,3.7,1.4,6.9,3.9,9.1c1.4,1.3,2.6,3,2.6,4.7c0,1.7-0.7,3.4-4.9,5.2C25,54.6,19.1,57.6,19,63.3c0,3.7,2.8,7,6.3,7h14.2 c1.1,0,2-0.9,2-2v-6.5C41.7,60.4,42.4,59,43.7,58.3z">
-                                                            </path>
-                                                            <path
-                                                                d="M76.3,64.3c-9.4,2.9-16.8-6-27.2-1.8c-0.8,0.3-1.2,1-1.2,1.9v10.7c0,1.4,1.2,2.3,2.5,1.9 c10.2-3.1,17.6,5.8,27.3,1.8c0.7-0.3,1.3-1,1.3-1.9V66.2C79,64.9,77.6,63.9,76.3,64.3z M63.7,74.3c-2.2,0-4-1.8-4-4s1.8-4,4-4 c2.2,0,4,1.8,4,4S65.9,74.3,63.7,74.3z">
-                                                            </path>
+                                                            <g id="Interface / Slider_01">
+                                                                <path id="Vector"
+                                                                    d="M14 15H21M3 15H5M5 15C5 16.3807 6.11929 17.5 7.5 17.5C8.88071 17.5 10 16.3807 10 15C10 13.6193 8.88071 12.5 7.5 12.5C6.11929 12.5 5 13.6193 5 15ZM20 9H21M3 9H10M16.5 11.5C15.1193 11.5 14 10.3807 14 9C14 7.61929 15.1193 6.5 16.5 6.5C17.8807 6.5 19 7.61929 19 9C19 10.3807 17.8807 11.5 16.5 11.5Z"
+                                                                    stroke="currentColor" stroke-width="2"
+                                                                    stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </g>
                                                         </g>
                                                     </svg>
-
                                                     <span class="side-menu__label">Slider</span> </a>
 
 
@@ -488,16 +487,63 @@
                                                             class="side-menu__item {{ request()->segment(2) == 'event' &&  request()->segment(3) == 'featured'  ? 'active' : ''}}">Featured</a>
                                                     </li>
                                                     <li class="slide"> <a href="{{route('event.index')}}"
-                                                            class="side-menu__item {{ request()->segment(2) == 'events' &&  request()->segment(3) !== 'categories' || request()->segment(2) == 'event' && request()->segment(3) !== 'category'  ? 'active' : ''}}">List</a>
+                                                            class="side-menu__item {{ request()->segment(2) == 'events' &&  request()->segment(3) == '' || request()->segment(2) == 'event' &&  request()->segment(3) === 'create'  ? 'active' : ''}}">List</a>
                                                     </li>
+                                                </ul>
+
+                                            </li>
+                                            <li class="slide has-sub"> <a href="javascript:void(0);"
+                                                    class="side-menu__item {{request()->segment(2) == 'activities' || request()->segment(2) == 'activity' ? 'active' : ''}}">
+                                                    <svg fill="none" class="icon side-menu__icon" viewBox="0 -5.5 20 20"
+                                                        version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                            stroke-linejoin="round"></g>
+                                                        <g id="SVGRepo_iconCarrier">
+                                                           
+                                                            <defs> </defs>
+                                                            <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                                fill-rule="evenodd">
+                                                                <g id="Dribbble-Light-Preview"
+                                                                    transform="translate(-260.000000, -3845.000000)"
+                                                                    fill="currentColor">
+                                                                    <g id="icons"
+                                                                        transform="translate(56.000000, 160.000000)">
+                                                                        <path
+                                                                            d="M216.512,3685 L210.796,3690.79 L208.051,3688.155 L208.044,3688.162 L208.038,3688.156 L204,3692.386 L205.453,3693.8 L208.115,3691.033 L210.859,3693.653 L216.512,3687.885 L219.252,3690.66 C219.545,3690.028 220.046,3689.514 220.666,3689.208 L216.512,3685 Z M224,3691.96 C224,3693.087 223.098,3694 221.986,3694 C220.874,3694 219.973,3693.087 219.973,3691.96 C219.973,3690.833 220.874,3689.92 221.986,3689.92 C223.098,3689.92 224,3690.833 224,3691.96 L224,3691.96 Z"
+                                                                            id="activity-[#985]"> </path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+
+
+                                                    <span class="side-menu__label">Activity</span> <i
+                                                        class="fe fe-chevron-right side-menu__angle"></i> </a>
+                                                <ul class="slide-menu child1"
+                                                    style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate3d(119.5px, 294px, 0px);"
+                                                    data-popper-placement="bottom">
+
+                                                    <li class="slide"> <a href="{{route('activity.category.index')}}"
+                                                            class="side-menu__item {{ request()->segment(2) == 'activity' && request()->segment(3) == 'category' || request()->segment(2) == 'activity' && request()->segment(3) == 'categories' ? 'active' : ''}}">Category</a>
+                                                    </li>
+                                                    <li class="slide"> <a href="{{route('activity.featured.index')}}"
+                                                            class="side-menu__item {{ request()->segment(2) == 'activity' && request()->segment(3) == 'features' || request()->segment(2) == 'activity' && request()->segment(3) == 'feature' ? 'active' : ''}}">Featured</a>
+                                                    </li>
+                                                    <li class="slide"> <a href="{{route('activity.list.index')}}"
+                                                            class="side-menu__item {{ request()->segment(2) == 'activities'||  request()->segment(2) == 'activity' && request()->segment(3) == 'new' ? 'active' : ''}}">List</a>
+                                                    </li>
+
                                                 </ul>
 
                                             </li>
                                             <li class="slide"> <a href="{{route('partner.index')}}"
                                                     class="side-menu__item {{request()->segment(2) == 'partners' || request()->segment(2) == 'partner' ? 'active' : ''}}">
-                                                    <svg fill="currentColor"  class="side-menu__icon" xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                                        xml:space="preserve">
+                                                    <svg fill="currentColor" class="side-menu__icon"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                                                        enable-background="new 0 0 100 100" xml:space="preserve">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>
@@ -548,16 +594,18 @@
                                                     style="position: relative; left: 0px; top: 0px; margin: 0px; transform: translate3d(119.5px, 294px, 0px);"
                                                     data-popper-placement="bottom">
 
-                                                    <li class="slide"> <a href="{{route('account.index')}}"
+                                                    <li class="slide"> <a
+                                                            href="https://vip.avianpass.com/dashboard/accounts"
                                                             class="side-menu__item {{ request()->segment(2) == 'account' || request()->segment(2) == 'accounts' && request()->segment(3) !== 'details' ? 'active' : ''}}">Lists</a>
                                                     </li>
-                                                    <li class="slide"> <a href="{{route('account.details.index')}}"
+                                                    <li class="slide"> <a
+                                                            href="https://vip.avianpass.com/dashboard/account/details"
                                                             class="side-menu__item {{ request()->segment(2) == 'account' &&  request()->segment(3) == 'details'  ? 'active' : ''}}">Details</a>
                                                     </li>
                                                 </ul>
 
                                             </li>
-                                            <li class="slide"> <a href="{{route('faq.index')}}"
+                                            <li class="slide"> <a href="https://vip.avianpass.com/dashboard/faqs"
                                                     class="side-menu__item {{request()->segment(2) == 'faq' || request()->segment(2) == 'faqs' ? 'active' : ''}}">
 
                                                     <svg fill="currentColor" class="side-menu__icon" viewBox="0 0 24 24"
@@ -575,7 +623,8 @@
                                                     <span class="side-menu__label">FAQs</span>
                                                 </a>
                                             </li>
-                                            <li class="slide"> <a href="{{route('testimonial.index')}}"
+                                            <li class="slide"> <a
+                                                    href="https://vip.avianpass.com/dashboard/testimonials"
                                                     class="side-menu__item {{request()->segment(2) == 'testimonials' || request()->segment(2) == 'testimonial' ? 'active' : ''}}">
 
                                                     <svg fill="currentColor" class="side-menu__icon" version="1.1"
@@ -616,24 +665,7 @@
                                                     <span class="side-menu__label">Testimonials</span>
                                                 </a>
                                             </li>
-                                            <li class="slide"> <a href="#"
-                                                    class="side-menu__item {{request()->segment(1) == 'company' || request()->segment(1) == 'companies' ? 'active' : ''}}">
 
-                                                    <svg fill="currentColor" class="side-menu__icon"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                                            stroke-linejoin="round"></g>
-                                                        <g id="SVGRepo_iconCarrier">
-                                                            <path
-                                                                d="M3 15H21M3 19H15M3 7H11M3 11H11M19.4 11H16.6C16.0399 11 15.7599 11 15.546 10.891C15.3578 10.7951 15.2049 10.6422 15.109 10.454C15 10.2401 15 9.96005 15 9.4V6.6C15 6.03995 15 5.75992 15.109 5.54601C15.2049 5.35785 15.3578 5.20487 15.546 5.10899C15.7599 5 16.0399 5 16.6 5H19.4C19.9601 5 20.2401 5 20.454 5.10899C20.6422 5.20487 20.7951 5.35785 20.891 5.54601C21 5.75992 21 6.03995 21 6.6V9.4C21 9.96005 21 10.2401 20.891 10.454C20.7951 10.6422 20.6422 10.7951 20.454 10.891C20.2401 11 19.9601 11 19.4 11Z"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        </g>
-                                                    </svg>
-                                                    <span class="side-menu__label">Contents</span>
-                                                </a>
-                                            </li>
 
                                         </ul>
                                         <div class="slide-right d-none" id="slide-right"><svg

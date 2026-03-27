@@ -26,7 +26,7 @@
                             <input type="search" class="form-control form-control-sm" placeholder="Search..."
                                 wire:model.live="search">
                         </label>
-                        <a href="{{ route('event.featured.create') }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('activity.featured.create') }}" class="btn btn-sm btn-primary">
                             <i class="bi bi-plus-circle"></i> New
                         </a>
                     </div>
@@ -47,11 +47,11 @@
                         @forelse($featured as $index=>$feature)
                         <tr>
                             <td>{{ $featured->firstItem()+$index }}</td>
-                            <td>{{ $feature->event->name }}</td>
+                            <td>{{ $feature->activity->name }}</td>
                             <td>{{ $feature->created_at }}</td>
                             <td x-data="{ openModal: false }">
                                 <div class="hstack gap-2">
-                                    <a href="{{ route('event.featured.edit', $feature->slug) }}"
+                                    <a href="{{ route('activity.featured.edit', $feature->slug) }}"
                                         class="btn btn-icon btn-info-transparent rounded-pill">
                                         <i class="ri-edit-line"></i>
                                     </a>
@@ -81,7 +81,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="4" class="text-center text-muted">No featured event found.</td>
+                            <td colspan="4" class="text-center text-muted">No featured activity found.</td>
                         </tr>
                         @endforelse
                     </tbody>

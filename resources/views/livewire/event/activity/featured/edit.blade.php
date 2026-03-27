@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5>Edit Featured Event</h5>
-        <a href="{{route('event.featured.index')}}" class="btn btn-primary btn-sm">
+        <h5>Edit Featured Activity</h5>
+        <a href="{{route('activity.category.index')}}" class="btn btn-primary btn-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -14,22 +14,22 @@
         <form wire:submit="update">
 
             <div class="mb-4">
-                <label class="form-label fw-bold">Event</label>
-                <select wire:model="event_id" class="form-select">
-                    <option value="">Choose a different event</option>
-                    @foreach($events as $event)
-                    <option value="{{ $event->id }}" {{ $event->id == $event_id ? 'selected' : '' }}>
-                        {{ $event->name }}
+                <label class="form-label fw-bold">Activity</label>
+                <select wire:model="activity_id" class="form-select">
+                    <option value="">Choose a different activity</option>
+                    @foreach($activities as $activity)
+                    <option value="{{ $activity->id }}" {{ $activity->id == $activity_id ? 'selected' : '' }}>
+                        {{ $activity->name }}
                     </option>
                     @endforeach
                 </select>
-                @error('event_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
+                @error('activity_id') <div class="text-danger small mt-1">{{ $message }}</div> @enderror
                 <small class="text-muted d-block mt-1">
-                    Changing this will replace the currently featured event.
+                    Changing this will replace the currently featured activity.
                 </small>
             </div>
             <div class="border-top px-4 py-3 d-flex justify-content-end gap-2">
-                <a href="{{ route('event.featured.index') }}" class="btn btn-outline-secondary">Cancel</a>
+                <a href="{{ route('activity.featured.index') }}" class="btn btn-outline-secondary">Cancel</a>
                 <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
                     <span wire:loading.remove wire:target="update">Save</span>
                     <span wire:loading wire:target="update">

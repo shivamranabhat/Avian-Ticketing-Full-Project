@@ -14,56 +14,41 @@
         <!-- hero section -->
         <section class="owl-carousel hero-slider">
             <div class="grid grid-cols-2 lg:grid-cols-9 gap-x-0 gap-y-6 lg:gap-y-0 lg:gap-x-6">
+                @forelse($sliders as $slider)
                 <div
-                    class="col-span-2 md:col-span-6 xl:col-span-7 bg-[url(./main/images/banner.png)] relative h-[20rem] bg-cover bg-center rounded-lg">
+                    class="col-span-2 md:col-span-6 xl:col-span-7 relative h-[20rem] bg-cover bg-center rounded-lg" style="background-image: url('{{asset('storage/'.$slider->image)}}')">
                     <div
                         class="flex flex-col justify-center text-white gap-y-6 p-4 sm:p-8 h-full absolute w-full md:w-[70%] xl:w-1/2">
                         <h1 class="italic font-bold text-3xl lg:text-4xl xl:text-5xl">BOOK THE
                             <br>SAFE RIDE
                         </h1>
-                        <h5 class="text-base xl:text-lg">Verified vehicles and trusted drivers, matched instantly for
-                            concerts,
-                            nightlife, tours, and airport
-                            rides. No calls. No bargaining.</h5>
-                        <a href="#" class="cursor-pointer">Find My Ride</a>
+                        <h5 class="text-base xl:text-lg">{{$slider->subtitle}}</h5>
+                        <a href="{{$slider->left_btn_link}}" class="cursor-pointer">{{$slider->left_btn_txt}}</a>
                     </div>
                 </div>
                 <div
                     class="col-span-2 md:col-span-3 xl:col-span-2 h-full w-full rounded-2xl border border-gray-400 flex flex-col p-6 gap-y-4">
                     <div class="price-box">
                         <p class="text-xs">From</p>
-                        <h5 class="text-xl font-semibold">$5.50 <span class="text-primary text-sm">/hour</span></h5>
+                        <h5 class="text-xl font-semibold">NRs.{{number_format($slider->starting_price,0)}} <span class="text-primary text-sm">/hour</span></h5>
                     </div>
                     <div class="flex flex-col gap-y-3 mt-2">
+                        @forelse($slider->sliderLists as $list)
                         <div class="flex gap-x-2 items-center">
-                            <img src="{{asset('main/images/downloads.svg')}}" class="w-8 sm:w-5" alt="downloads icon">
+                            <img src="{{asset('storage/'.$list->icon)}}" class="w-8 sm:w-5" alt="icon icon">
                             <p class="text-primary text-sm sm:text-xs">
-                                Unlimited stock downloads
+                               {{$slider->title}}
                             </p>
                         </div>
-                        <div class="flex gap-x-2 items-center">
-                            <img src="{{asset('main/images/cert.svg')}}" class="w-8 sm:w-5" alt="cert icon">
-                            <p class="text-primary text-sm sm:text-xs">
-                                26+ million premium assets
-                            </p>
-                        </div>
-                        <div class="flex gap-x-2 items-center">
-                            <img src="{{asset('main/images/check.svg')}}" class="w-8 sm:w-5" alt="check icon">
-                            <p class="text-primary text-sm sm:text-xs">
-                                Lifetime commercial license
-                            </p>
-                        </div>
-                        <div class="flex gap-x-2 items-center">
-                            <img src="{{asset('main/images/logout.svg')}}" class="w-8 sm:w-5" alt="logout icon">
-                            <p class="text-primary text-sm sm:text-xs">
-                                Easy cancelation
-                            </p>
-                        </div>
+                        @empty
+                       @endforelse
                     </div>
-                    <a href="#"
-                        class="text-center mt-4 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-sm text-white rounded px-4 py-2">Show
-                        Offers!</a>
+                    <a href="{{$slider->right_btn_link}}"
+                        class="text-center mt-4 bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] text-sm text-white rounded px-4 py-2">{{$slider->right_btn_txt}}</a>
                 </div>
+                @empty
+
+                @endforelse
             </div>
         </section>
         <!-- hero section -->
@@ -71,7 +56,7 @@
         <!-- event section -->
         <div class="flex flex-col gap-y-4 mt-3 md:mt-6 lg:mt-10">
             <h2 class="text-2xl md:text-3xl font-semibold mt-3">All events</h2>
-            
+
             @if($events->count()>0)
             <div class="relative">
                 <div class="owl-carousel event-slider z-10">
