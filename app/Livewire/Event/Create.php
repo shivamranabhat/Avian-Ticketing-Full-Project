@@ -5,6 +5,7 @@ namespace App\Livewire\Event;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Event;
+use App\Models\Page;
 use App\Models\EventCategory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -18,6 +19,7 @@ class Create extends Component
     public $event_category_id;
     public $location;
     public $organizer;
+    public $sponsor;
     public $about;
     public $venue;
 
@@ -53,6 +55,7 @@ class Create extends Component
         'event_category_id' => 'required|exists:event_categories,id',
         'location'          => 'required|string|max:255',
         'organizer'         => 'required|string|max:255',
+        'sponsor'           => 'nullable|string|max:255',
         'about'             => 'nullable|string',
         'venue'             => 'nullable|string|max:255',
 
@@ -128,11 +131,16 @@ class Create extends Component
             'date'              => $this->date,
             'location'          => $this->location,
             'organizer'         => $this->organizer,
+            'sponsor'           => $this->sponsor,
             'about'             => $this->about,
             'venue'             => $this->venue,
             'main_image'        => $mainImagePath,
             'image_alt'         => $this->image_alt ?? $this->name,
             'images'            => $imagePaths ?: null,
+        ]);
+        Page::create([
+            'name'    => $event->name,
+            'slug'     => $event->slug,
         ]);
 
         // Artists

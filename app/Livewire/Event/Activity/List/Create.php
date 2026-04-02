@@ -5,6 +5,7 @@ namespace App\Livewire\Event\Activity\List;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Activity;
+use App\Models\Page;
 use App\Models\ActivityCategory;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,6 +18,7 @@ class Create extends Component
     public $activity_category_id;
     public $location;
     public $organizer;
+    public $spnsor;
     public $about;
     public $venue;
 
@@ -48,6 +50,7 @@ class Create extends Component
         'activity_category_id' => 'required|exists:activity_categories,id',
         'location'          => 'required|string|max:255',
         'organizer'         => 'nullable|string|max:255',
+        'sponsor'           => 'nullable|string|max:255',
         'about'             => 'nullable|string',
 
         'main_image'        => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
@@ -116,6 +119,7 @@ class Create extends Component
             'activity_category_id' => $this->activity_category_id,
             'location'          => $this->location,
             'organizer'         => $this->organizer,
+            'sponsor'           => $this->sponsor,
             'about'             => $this->about,
             'main_image'        => $mainImagePath,
             'img_alt'         => $this->img_alt ?? $this->name,
@@ -153,6 +157,11 @@ class Create extends Component
             ]);
         }
 
+        Page::create([
+            'name'    => $activity->name,
+            'slug'     => $activity->slug,
+        ]);
+        
         session()->flash('success', 'Activity created successfully.');
         return redirect()->route('activity.list.index');
     }

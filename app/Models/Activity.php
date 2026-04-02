@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
      protected $fillable = [
-        'name', 'location', 'organizer', 'about','main_image','img_alt', 'images','activity_category_id','slug'
+        'name', 'location', 'organizer','sponsor', 'about','main_image','img_alt', 'images','activity_category_id','slug'
     ];
 
     protected $casts = [
@@ -38,5 +38,10 @@ class Activity extends Model
     public function tocs()
     {
         return $this->hasMany(ActivityToc::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(ActivityBooking::class);
     }
 }

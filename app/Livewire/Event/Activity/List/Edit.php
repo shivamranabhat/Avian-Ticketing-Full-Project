@@ -5,6 +5,7 @@ namespace App\Livewire\Event\Activity\List;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Activity;
+use App\Models\Page;
 use App\Models\ActivityCategory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
@@ -20,6 +21,7 @@ class Edit extends Component
     public $name = '';
     public $location = '';
     public $organizer = '';
+    public $sponsor = '';
     public $about = '';
     public $activity_category_id = '';
     public $categories;
@@ -46,6 +48,7 @@ class Edit extends Component
         'name'              => 'required|string|max:255',
         'location'          => 'required|string|max:255',
         'organizer'         => 'required|string|max:255',
+        'sponsor'           => 'nullable|string|max:255',
         'about'             => 'nullable|string',
         'activity_category_id' => 'required|exists:activity_categories,id',
 
@@ -79,6 +82,7 @@ class Edit extends Component
         $this->date              = Carbon::parse($this->activity->date)->format('Y-m-d\TH:i');
         $this->location          = $this->activity->location;
         $this->organizer         = $this->activity->organizer;
+        $this->sponsor           = $this->activity->sponsor;
         $this->about             = $this->activity->about;
         $this->venue             = $this->activity->venue;
         $this->img_alt         = $this->activity->img_alt ?? $this->activity->name;
@@ -175,6 +179,7 @@ class Edit extends Component
             'name'              => $this->name,
             'location'          => $this->location,
             'organizer'         => $this->organizer,
+            'sponsor'           => $this->sponsor,
             'about'             => $this->about,
             'activity_category_id' => $this->activity_category_id,
             'main_image'        => $mainImagePath,
@@ -211,6 +216,14 @@ class Edit extends Component
                 'title'       => $toc['title'],
                 'description' => $toc['description'],
                 'slug'        => Str::slug($toc['title'] . '-' . time()),
+            ]);
+        }
+        // Update the associated page
+        $page = Page::where('slug', $event->slug)->first();
+        if ($page) {
+            $page->update([
+                'name' => $event->name,
+                'slug' => $event->slug,
             ]);
         }
 

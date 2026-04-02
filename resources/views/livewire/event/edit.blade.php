@@ -37,6 +37,11 @@
                     <input type="text" class="form-control" wire:model="organizer" placeholder="Organizer name / company">
                     @error('organizer') <span class="text-danger fs-12">{{ $message }}</span> @enderror
                 </div>
+                <div class="col-12">
+                    <label class="form-label">Sponsor</label>
+                    <input type="text" class="form-control" wire:model="sponsor" placeholder="Sponsor name / company">
+                    @error('sponsor') <span class="text-danger fs-12">{{ $message }}</span> @enderror
+                </div>
 
                 <div class="col-md-6">
                     <label class="form-label">Category</label>

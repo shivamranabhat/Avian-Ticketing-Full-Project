@@ -26,7 +26,7 @@
                     <h5 class="text-xl font-bold"> {{ $event->event->location }}</h5>
                     <p class="text-sm font-semibold">NRs.{{ number_format($event->event->tickets->min('price') ?? 0,
                         0) }} onwards</p>
-                    <a href="#"
+                    <a href="{{route('ticket.details',$event->event->slug)}}"
                         class="bg-gradient-to-b from-[#C22C9F] to-[#AA02FF] px-6 py-3 rounded-lg text-white w-fit text-sm">Buy
                         tickets</a>
                 </div>
@@ -41,78 +41,31 @@
     </div>
     @endif
     <!-- featured events mobile view -->
-    <div class="flex flex-col gap-y-4 my-4 block md:hidden">
+    @if($featured->count()>0)
+    <div class="flex flex-col gap-y-4 my-4 md:hidden">
         <div class="owl-carousel featured-slider z-10">
+            @foreach($featured as $event)
             <div class="item border border-gray-300 rounded-lg overflow-hidden">
-                <a class="flex flex-col gap-y-4" href="details.html">
-                    <img src="https://media.insider.in/image/upload/c_crop,g_custom/v1765797308/piyxlscoubr2t9vtbswt.png"
-                        class="w-full h-full rounded-t-lg object-cover" alt="">
+                <a class="flex flex-col gap-y-4" href="{{route('ticket.details',$event->event->slug)}}">
+                    <img src="{{asset('storage/'.$event->event->main_image)}}"
+                        class="w-full h-full rounded-t-lg object-cover" alt="{{$event->event->img_alt}}">
                     <div class="flex flex-col px-3 pb-3">
-                        <p class="text-xs">Sat, 28 Feb, 6:00 PM</p>
+                        <p class="text-xs">{{ \Carbon\Carbon::parse($event->event->start_date)->format('D, d M, h:i A') }}</p>
                         <h5 class="text-base font-semibold">
-                            Karan Aujla P-Pop Culture India Tour
-                            - Delhi
+                           {{ $event->event->name }}
                         </h5>
                         <p class="text-primary text-xs">
-                            Jawaharlal Nehru Stadium, Delhi/NCR
+                            {{ $event->event->location }}
                         </p>
-                        <h6 class="mt-2 text-xs">₹5999 onwards</h6>
+                        <h6 class="mt-2 text-xs">NRs.{{ number_format($event->event->tickets->min('price') ?? 0, 0) }} onwards</h6>
                     </div>
                 </a>
             </div>
-            <div class="item border border-gray-300 rounded-lg overflow-hidden">
-                <a class="flex flex-col gap-y-4" href="details.html">
-                    <img src="https://media.insider.in/image/upload/c_crop,g_custom/v1767962984/brdnesmhdcmf1jifgzgs.png"
-                        class="w-full h-full rounded-t-lg object-cover" alt="">
-                    <div class="flex flex-col px-3 pb-3">
-                        <p class="text-xs">Sat, 28 Feb, 6:00 PM</p>
-                        <h5 class="text-base font-semibold">
-                            Karan Aujla P-Pop Culture India Tour
-                            - Delhi
-                        </h5>
-                        <p class="text-primary text-xs">
-                            Jawaharlal Nehru Stadium, Delhi/NCR
-                        </p>
-                        <h6 class="mt-2 text-xs">₹5999 onwards</h6>
-                    </div>
-                </a>
-            </div>
-            <div class="item border border-gray-300 rounded-lg overflow-hidden">
-                <a class="flex flex-col gap-y-4" href="details.html">
-                    <img src="https://media.insider.in/image/upload/c_crop,g_custom/v1768713205/bfikxlzq8kooqvtdcznu.jpg"
-                        class="w-full h-full rounded-t-lg object-cover" alt="">
-                    <div class="flex flex-col px-3 pb-3">
-                        <p class="text-xs">Sat, 28 Feb, 6:00 PM</p>
-                        <h5 class="text-base font-semibold">
-                            Karan Aujla P-Pop Culture India Tour
-                            - Delhi
-                        </h5>
-                        <p class="text-primary text-xs">
-                            Jawaharlal Nehru Stadium, Delhi/NCR
-                        </p>
-                        <h6 class="mt-2 text-xs">₹5999 onwards</h6>
-                    </div>
-                </a>
-            </div>
-            <div class="item flex flex-col gap-y-4 border border-gray-300 rounded-lg overflow-hidden">
-                <a class="flex flex-col gap-y-4" href="details.html">
-                    <img src="https://media.insider.in/image/upload/c_crop,g_custom/v1749453618/menszqwcm1r9ofqdpajr.png"
-                        class="w-full h-full rounded-t-lg object-cover" alt="">
-                    <div class="flex flex-col px-3 pb-3">
-                        <p class="text-xs">Sat, 28 Feb, 6:00 PM</p>
-                        <h5 class="text-base font-semibold">
-                            Karan Aujla P-Pop Culture India Tour
-                            - Delhi
-                        </h5>
-                        <p class="text-primary text-xs">
-                            Jawaharlal Nehru Stadium, Delhi/NCR
-                        </p>
-                        <h6 class="mt-2 text-xs">₹5999 onwards</h6>
-                    </div>
-                </a>
-            </div>
+            @endforeach
+
         </div>
     </div>
+    @endif
     <!-- featured events mobile view -->
     <!-- event section -->
     <div class="flex flex-col gap-y-4 px-6 py-2 sm:px-8 md:px-14 xl:px-24 mt-6 md:mt-10">

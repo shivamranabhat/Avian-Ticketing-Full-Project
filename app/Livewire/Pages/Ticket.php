@@ -32,9 +32,6 @@ class Ticket extends Component
 
     public function render()
     {
-        return view('livewire.pages.ticket', [
-            'booking' => $this->booking,
-            'event' => $this->event
-        ]);
+        return view('livewire.pages.ticket');
     }
 }

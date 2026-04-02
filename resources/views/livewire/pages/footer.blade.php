@@ -16,10 +16,9 @@
     <div class="w-full bg-[#77777E] h-px mt-4 lg:mt-0 mb-2"></div>
     <div
         class="bottom-col flex flex-col lg:flex-row px-0 lg:px-2 xl:px-12 justify-between items-center gap-y-10 lg:gap-y-0">
-        <p class="text-[#77777E] text-[0.7rem] text-center">By accessing this page, you confirm that you have read,
-            understood,
-            and agreed to our Terms of Service, Cookie Policy, Privacy Policy, and Content Guidelines. All rights
-            reserved.</p>
+        @if($footer)
+        <p class="text-[#77777E] text-[0.7rem] text-center">{{$footer->content}}</p>
+        @endif
         <div class="flex gap-x-6 lg:gap-x-4">
             <img src="{{asset('main/images/whatsapp.svg')}}" class="size-7 cursor-pointer" alt="">
             <img src="{{asset('main/images/facebook.svg')}}" class="size-7 cursor-pointer" alt="">

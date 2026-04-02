@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityTicket extends Model
 {
-    protected $fillable = ['activity_id', 'name', 'price'];
+    protected $fillable = ['activity_id', 'name', 'price',];
 
     public function activity()
     {

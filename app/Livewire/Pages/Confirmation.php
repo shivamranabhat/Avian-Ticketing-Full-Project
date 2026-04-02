@@ -25,7 +25,9 @@ class Confirmation extends Component
 
     public function mount()
     {
-        $this->event = Event::where('slug', $this->slug)->firstOrFail();
+        $this->event = Event::where('slug', $this->slug)
+            ->with('tickets')           // Important: eager load tickets
+            ->firstOrFail();
 
         $quantities = session('selected_tickets', []);
 
@@ -74,7 +76,7 @@ class Confirmation extends Component
     {
         $this->validate([
             'name'       => 'required|string|max:255',
-            'phone'      => 'required|string|max:15',
+            'phone'      => 'required|string|max:20',
             'email'      => 'required|email|max:255',
             'pay_method' => 'required|in:esewa,khalti',
         ]);
@@ -109,16 +111,17 @@ class Confirmation extends Component
             }
         }
 
-        // Clear session
         session()->forget('selected_tickets');
 
-        session()->flash('success', 'Confirmed ! Your Booking Reference: ' . $booking->booking_reference);
+        session()->flash('success', 'Confirmed! Your Booking Reference: ' . $booking->booking_reference);
 
         return $this->redirect(route('event.ticket', $booking->booking_reference));
     }
 
     public function render()
     {
-        return view('livewire.pages.confirmation');
+        return view('livewire.pages.confirmation', [
+            'event' => $this->event
+        ]);
     }
 }

@@ -4,20 +4,31 @@ namespace App\Livewire\Pages;
 
 use Livewire\Component;
 use App\Models\Event;
+use App\Models\BodyContent;
 
 class Details extends Component
 {
     public $slug;
     public $event;
+    public $rsvp;
     public $quantities = [];
+    public $showFullAbout = false;
+    public $aboutHasMore = false;
 
     public function mount()
     {
         $this->event = Event::where('slug', $this->slug)->firstOrFail();
+        $this->rsvp = BodyContent::where('slug', 'rsvp')->first();
 
         foreach ($this->event->tickets as $ticket) {
             $this->quantities[$ticket->id] = 0;
         }
+         $this->aboutHasMore = str_word_count($this->event->about) > 50;
+    }
+
+    public function toggleAbout()
+    {
+        $this->showFullAbout = !$this->showFullAbout;
     }
 
     public function increment($ticketId)
@@ -92,13 +103,11 @@ class Details extends Component
 
         // Store in session
         session(['selected_tickets' => $this->quantities]);
-        $this->redirect(route('ticket.confirmation', $this->slug));
+        $this->redirect(route('event.confirmation', $this->slug));
     }
 
     public function render()
     {
-        return view('livewire.pages.details', [
-            'event' => $this->event
-        ]);
+        return view('livewire.pages.details');
     }
 }
